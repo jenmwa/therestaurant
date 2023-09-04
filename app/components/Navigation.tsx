@@ -1,3 +1,3 @@
 export function Navigation() {
-  return <>Navigation</>;
+  return <> Navigation Links</>;
 }

@@ -1,7 +1,15 @@
+import { Navigation } from "./Navigation"
 
 
 export const Header = () => {
   return <>
-    Header
+    <header>
+      <nav>
+      Header
+      <Navigation></Navigation>
+      </nav>
+    </header>
+   
+    
   </>
 }
