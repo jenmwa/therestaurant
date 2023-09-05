@@ -1,0 +1,57 @@
+@import '../style/variables.scss';
+
+header {
+  font-family: $FontParagraph;
+  background-color: $grey700;
+  color: $accent4;
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.5rem 2rem;
+}
+
+.header__logo {
+  margin-left: 0.5rem;
+  margin-top: 1.2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: end;
+  
+}
+ul {
+  margin-top: 2rem;
+  list-style: none;
+  display: flex;
+  justify-content: end;
+  align-items: baseline;
+  
+}
+
+li {
+  margin-left: 1rem;
+}
+
+.CTA {
+  background-color: $accent2;
+  color: $grey700;
+  padding: 0.4rem 0.8rem;
+  margin-right: 1rem;
+  font-weight: bold;
+  opacity: 1;
+  transition-timing-function: ease-out;
+  transition: 0.2s;
+
+  &:hover {
+    outline: 4px solid $accent3;
+    background-color: transparent;
+    color: $accent4;
+    transition-timing-function: ease-in;
+    transition: 0.5s;
+    
+  }
+}
+}
