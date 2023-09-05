@@ -20,9 +20,10 @@ export default function Home() {
     };
 
     const getRestaurant = async (id: string) => {
-      await axios.get(
-        `https://school-restaurant-api.azurewebsites.net/restaurant/:${id}`
+      const response = await axios.get(
+        `https://school-restaurant-api.azurewebsites.net/restaurant/${id}`
       );
+      console.log(response.data)
     };
 
     const createRestaurant = async () => {
@@ -37,7 +38,8 @@ export default function Home() {
         console.error("POST Error:", error);
       }
     };
-  });
+    createRestaurant();
+  },[]);
 
   return (
     <main className={styles.main}>
