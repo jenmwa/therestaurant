@@ -1,13 +1,11 @@
 import { Navigation } from "./Navigation"
+import '../style/header.scss';
 
 
 export const Header = () => {
   return <>
     <header>
-      <nav>
-      Header
       <Navigation></Navigation>
-      </nav>
     </header>
    
     
