@@ -4,7 +4,9 @@ import { ICreateRestaurant } from "../models/ICreateRestaurant";
 const BASE_URL = "https://school-restaurant-api.azurewebsites.net/restaurant/";
 
 const getRestaurant = async (id: string) => {
+  console.log(id)
   const response = await axios.get(`${BASE_URL}${id}`);
+  return response.data;
 };
 
 const postUrl = `${BASE_URL}create`;
@@ -17,7 +19,7 @@ const postData: ICreateRestaurant = {
   },
 };
 
-const createRestaurant = async () => {
+export const createRestaurant = async () => {
   try {
     const response = await axios.post(postUrl, postData);
     console.log("POST Response:", response.data);
@@ -26,6 +28,7 @@ const createRestaurant = async () => {
     console.log(id);
     const restaurant = await getRestaurant(id);
     console.log(restaurant);
+    return restaurant;
   } catch (error) {
     console.error("POST Error:", error);
   }

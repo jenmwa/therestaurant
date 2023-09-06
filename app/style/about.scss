@@ -1,7 +1,6 @@
-@import '../style/variables.scss';
+@import "../style/variables.scss";
 
 section.about {
-  
   min-height: 100vh;
   padding: 10rem 1rem 1rem 1rem;
 
@@ -15,5 +14,4 @@ section.about {
     margin-inline: 1rem;
     color: $grey300;
   }
-
 }
