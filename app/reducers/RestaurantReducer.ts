@@ -9,5 +9,9 @@ export const RestaurantReducer = (
   restaurant: IRestaurant,
   action: IAction
 ): IRestaurant => {
+
+  if(action.type === 'SETRESTAURANT') {
+    return JSON.parse(action.payload)
+  }
   return restaurant;
 };
