@@ -9,7 +9,7 @@ export const About = () => {
   return (
     <>
       <section className="about">
-        <h1>{restaurant.name.toUpperCase()}</h1>
+        <h1>{restaurant.name}</h1>
       </section>
     </>
   );
