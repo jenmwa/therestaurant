@@ -1,3 +1,19 @@
+@import '../style/variables.scss';
+
 section.about {
-min-height: 80vh;
+  
+  min-height: 100vh;
+  padding: 10rem 1rem 1rem 1rem;
+
+  h2 {
+    font-family: $FontHeading;
+    font-size: 4rem;
+    color: $accent1;
+  }
+
+  p {
+    margin-inline: 1rem;
+    color: $grey300;
+  }
+
 }
