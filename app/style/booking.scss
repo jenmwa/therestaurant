@@ -1,0 +1,48 @@
+@import "../style/variables.scss";
+
+section.booking {
+  min-height: 100vh;
+  padding: 10rem 1rem 1rem 1rem;
+
+  h2 {
+    font-family: $FontHeading;
+    font-size: 4rem;
+    color: $accent1;
+  }
+
+  p {
+    margin-inline: 1rem;
+    color: $grey300;
+  }
+
+  form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  input[type="date"] {
+    cursor: pointer;
+    background-color: $accent2;
+    padding: 15px;
+    // position: absolute;
+    // transform: translate(-50%, -50%);
+    // top: 50%;
+    // left: 50%;
+    font-family: $FontParagraph;
+    color: $grey500;
+    font-size: 18px;
+    border: none;
+    outline: none;
+  }
+  ::-webkit-calendar-picker-indicator {
+    background-color: #000000;
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  input[type="number"] {
+    padding: 15px;
+  }
+}
