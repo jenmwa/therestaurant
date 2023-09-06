@@ -1,68 +1,129 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 class UserBookingData {
   constructor(
     public restaurantId: string | undefined,
     public date: string,
-    public numberOfGuests: number
+    public numberOfGuests: number,
+    public time: string | null
   ) {}
 }
 
 export const BookTableForm = ({ restaurantId }: { restaurantId?: string }) => {
   const [userDate, setUserDate] = useState("");
-  const [userGuests, setUserGuests] = useState(1);
-
-  const booking = new UserBookingData(restaurantId, userDate, userGuests);
-  console.log(booking);
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    console.log("submit");
-  };
+  const [userGuests, setUserGuests] = useState(0);
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [isValid, setIsValid] = useState(false);
 
   const handleDate = (e: ChangeEvent<HTMLInputElement>) => {
     const date = e.target.value;
     console.log(date);
     setUserDate(date);
+    validateForm(date, userGuests);
   };
 
-  function handleGuests(e: ChangeEvent<HTMLSelectElement>) {
+  const handleGuests = (e: ChangeEvent<HTMLSelectElement>) => {
     const guests = Number(e.target.value);
     console.log("you selected:", guests + " guests");
     setUserGuests(guests);
-  }
+    validateForm(userDate, guests);
+  };
+
+  const validateForm = (date: string, guests: number) => {
+    if (date && guests > 0) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  };
+
+  const handleTime = (time: string) => {
+    console.log("click to show time");
+    setSelectedTime(time);
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const booking = new UserBookingData(
+      restaurantId,
+      userDate,
+      userGuests,
+      selectedTime
+    );
+    console.log(booking);
+  };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="form--book-table" onSubmit={handleSubmit}>
+        <h3>lets book a table!</h3>
         <label>
           Select Date:<br></br>
           <input type="date" value={userDate} onChange={handleDate}></input>
         </label>
 
-        <label>
-          Number of Guests:<br></br>
-          <select
-            name="number of guests"
-            value={userGuests}
-            onChange={handleGuests}
-          >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>
-        </label>
+        <div className="select-dropdown">
+          <label>
+            Number of Guests:<br></br>
+            <select
+              name="number of guests"
+              value={userGuests}
+              onChange={handleGuests}
+            >
+              <option value="0">Select number of Guests:</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </label>
+        </div>
+
+        {isValid && (
+          <>
+            Choose your time:
+            <div className="btn-wrapper">
+              <button
+                className={`time-btn ${
+                  selectedTime === "18:00" ? "selected" : ""
+                }`}
+                onClick={() => handleTime("18:00")}
+              >
+                18:00
+              </button>
+              <button
+                className={`time-btn ${
+                  selectedTime === "21:00" ? "selected" : ""
+                }`}
+                onClick={() => handleTime("21:00")}
+              >
+                21:00
+              </button>
+            </div>
+          </>
+        )}
+        {selectedTime && (
+          <div className="confirmation-div">
+            <span>Your Booking:</span>
+            <p>Selected Date: {userDate}</p>
+            <p>Numbers of Guests: {userGuests}</p>
+            <p>Selected Time: {selectedTime}</p>
+          </div>
+        )}
+        <button
+          type="submit"
+          className="submit-btn"
+          disabled={!isValid || !selectedTime}
+        >
+          Confirm Booking
+        </button>
       </form>
     </>
   );
 };
 
-function useContext() {
-  throw new Error("Function not implemented.");
-}
 // POST
 // 'http://localhost:3000/booking/create' \
 // [
