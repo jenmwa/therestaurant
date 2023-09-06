@@ -1,22 +1,22 @@
-"use client";
+// "use client";
 
-import axios from "axios";
-import { useEffect, useState } from "react";
+// import axios from "axios";
+// import { useEffect, useState } from "react";
 
-export function Home() {
-  const [restaurant, setRestaurant] = useState([]);
+// export function Home() {
+//   const [restaurant, setRestaurant] = useState([]);
 
-  async function handleClick() {
-    const response = await axios.get("/api/restaurant");
-  }
+//   async function handleClick() {
+//     const response = await axios.get("/api/restaurant");
+//   }
 
-  return (
-    <>
-      HOME
-      <button onClick={handleClick}>Get Restaurant</button>
-      <span>{restaurant}</span>
-    </>
-  );
-}
+//   return (
+//     <>
+//       HOME
+//       <button onClick={handleClick}>Get Restaurant</button>
+//       <span>{restaurant}</span>
+//     </>
+//   );
+// }
 
-export default Home;
+// export default Home;

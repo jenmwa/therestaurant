@@ -1,5 +1,10 @@
 export function Booking() {
-  return <>Booking</>;
+
+  return <>
+    <section className='about'>
+      Booking
+    </section>
+  </>;
 }
 
 export default Booking;

@@ -1,5 +1,11 @@
+import '../style/about.scss'
+
 export function Contact() {
-  return <>Contact</>;
+  return <>
+    <section className='about'>
+      Contact
+    </section>
+  </>;
 }
 
 export default Contact;
