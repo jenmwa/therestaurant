@@ -6,7 +6,7 @@ const BASE_URL = "https://school-restaurant-api.azurewebsites.net/restaurant/";
 const getRestaurant = async (id: string) => {
   console.log(id)
   const response = await axios.get(`${BASE_URL}${id}`);
-  return response.data;
+  return response.data[0];
 };
 
 const postUrl = `${BASE_URL}create`;
