@@ -7,7 +7,6 @@ import { RestaurantContext } from "../contexts/RestaurantContext";
 
 export function Booking() {
   const { _id } = useContext(RestaurantContext);
-  console.log(JSON.stringify(_id));
 
   return (
     <>
