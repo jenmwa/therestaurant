@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
+//https://johnny.am/blog/n2-adding-google-fonts-to-nextjs-project
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
