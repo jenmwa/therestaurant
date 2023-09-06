@@ -1,9 +1,14 @@
-import '../style/footer.scss'
-export const Footer = () => {
+"use client";
 
-  return <>
-    <footer>
-      Footer
-    </footer>
+import { useContext } from "react";
+import "../style/footer.scss";
+import { RestaurantContext } from "../contexts/RestaurantContext";
+export const Footer = () => {
+  const restaurant = useContext(RestaurantContext);
+
+  return (
+    <>
+      <footer>{restaurant.name}</footer>
     </>
-}
+  );
+};
