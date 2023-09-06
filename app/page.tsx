@@ -15,12 +15,15 @@ import { RestaurantDispatchContext } from "./contexts/RestaurantDispatchContext"
 
 //vi ska kalla på createrestaurant och få svar och svaret tillgängligt i hela appen
 export default function Home() {
-  const [restaurant, dispatch] = useReducer(RestaurantReducer, []);
+  const [restaurant, dispatch] = useReducer(
+    RestaurantReducer,
+    {} as IRestaurant
+  );
 
   useEffect(() => {
     async function getData() {
       const restaurant = await createRestaurant();
-      dispatch({ type: "SETRESTAURANT", payload: JSON.stringify(restaurant) });
+      dispatch({ type: "SETRESTAURANT", payload: restaurant });
     }
     getData();
   }, []);

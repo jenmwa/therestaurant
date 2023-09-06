@@ -2,7 +2,7 @@ import { IRestaurant } from "../models/IRestaurant";
 
 export interface IAction {
   type: string;
-  payload: string;
+  payload: IRestaurant;
 }
 
 export const RestaurantReducer = (
@@ -11,7 +11,7 @@ export const RestaurantReducer = (
 ): IRestaurant => {
 
   if(action.type === 'SETRESTAURANT') {
-    return JSON.parse(action.payload)
+    return action.payload;
   }
   return restaurant;
 };
