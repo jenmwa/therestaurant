@@ -29,13 +29,11 @@ export default function Home() {
   }, []);
 
   return (
-    <main className={styles.main}>
-      <RestaurantContext.Provider value={restaurant}>
-        <RestaurantDispatchContext.Provider value={dispatch}>
-          <Hero></Hero>
-          <About></About>
-        </RestaurantDispatchContext.Provider>
-      </RestaurantContext.Provider>
-    </main>
+    <RestaurantContext.Provider value={restaurant}>
+      <RestaurantDispatchContext.Provider value={dispatch}>
+        <Hero></Hero>
+        <About></About>
+      </RestaurantDispatchContext.Provider>
+    </RestaurantContext.Provider>
   );
 }

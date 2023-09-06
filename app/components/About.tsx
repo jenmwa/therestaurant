@@ -1,16 +1,15 @@
 import { useContext } from "react";
 import "../style/about.scss";
 import { RestaurantContext } from "../contexts/RestaurantContext";
+import { IRestaurant } from "../models/IRestaurant";
 
 export const About = () => {
-  const restaurant = useContext(RestaurantContext);
-  console.log(restaurant);
+  const restaurant = useContext<IRestaurant>(RestaurantContext);
 
   return (
     <>
       <section className="about">
-        about
-        <p>{restaurant.city}</p>
+        <h1>{restaurant.name.toUpperCase()}</h1>
       </section>
     </>
   );
