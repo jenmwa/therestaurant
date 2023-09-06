@@ -1,0 +1,62 @@
+@import '../style/variables.scss';
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  font-family: $FontParagraph;
+  background:  rgba(0, 0, 0, 0.55);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1.5rem 2rem;
+}
+
+.header__logo {
+  margin-left: 0.5rem;
+  margin-top: 1.2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+ul {
+  margin-top: 2rem;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  
+}
+
+li {
+  margin-left: 1rem;
+}
+
+.CTA {
+  background-color: $accent2;
+  color: $grey700;
+  padding: 0.4rem 0.8rem;
+  margin-right: 1rem;
+  font-weight: bold;
+  transition-timing-function: ease-out;
+  transition: 0.2s;
+
+  &:hover {
+    outline: 4px solid $accent3;
+    background-color: transparent;
+    color: $accent4;
+    transition-timing-function: ease-in;
+    transition: 0.5s;
+    
+  }
+}
+}

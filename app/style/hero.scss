@@ -1,0 +1,104 @@
+@import '../style/variables.scss';
+
+.hero-img {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/pexels-rachel-claire-4577410.jpg');
+  height: 90vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-info {
+  text-align: center;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+
+  img {
+    width: 350px;
+  }
+
+  p {
+    margin-block: 2rem;
+    text-shadow: #000 1px 0 10px;
+  }
+
+  button {
+    display: inline-block;
+    border: none;
+    margin-top: 2rem;
+   
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.8rem 1.6rem;
+    transition-timing-function: ease-out;
+    transition: 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      outline: 4px solid $accent3;
+      background-color: black;
+      color: $accent4;
+      transition-timing-function: ease-in;
+      transition: 0.5s;
+    }
+
+    
+  }
+  .btn-primary {
+    background-color: $accent2;
+  }
+
+  .btn-secondary {
+    background-color: black;
+    color: $accent4;
+    border: 4px solid $accent3;
+    font-weight: 300;
+
+    &:hover {
+      border: 4px solid black;
+      outline: 4px solid $accent1;
+      background-color: black;
+      color: $accent4;
+      transition-timing-function: ease-in;
+      transition: 0.5s;
+      
+    }
+
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hero-img {
+    background-position: 25% 75%;
+  }
+
+  .hero-info {
+    img {
+      width: 500px;
+      height: auto;
+    }
+  
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .hero-img {
+    background-position: 90% 65%;
+    top: 40%;
+  }
+
+  .hero-info {
+  
+    img {
+      width: 800px;
+      height: auto;
+    }
+  
+  }
+
+
+  
+}
