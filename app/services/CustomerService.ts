@@ -1,28 +1,20 @@
 import axios from "axios";
-import { ICreateCustomer } from "../models/ICreateCustomer";
+import { CreateCustomer } from "../models/CreateCustomer";
 
 const BASE_URL = "https://school-restaurant-api.azurewebsites.net/customer/";
 
-const getCustomer = async (newCustomerId: string) => {
+async function getCustomer(newCustomerId: string) {
   const response = await axios.get(`${BASE_URL}${newCustomerId}`);
   return response.data[0];
 };
 
-export const createCustomer = async () => {
+export async function createNewCustomer(postData: CreateCustomer) {
   try {
     const postUrl = `${BASE_URL}create`;
-    const postData: ICreateCustomer = {
-      name: 'te',
-      lastname: 'st',
-      email: 'te@st.com',
-      phone: '012456789'
-    };
     const response = await axios.post(postUrl, postData);
-    console.log("POST Response:", response.data);
 
     const newCustomerId = response.data;
     const newCustomer = await getCustomer(newCustomerId);
-    console.log(newCustomer);
     return newCustomer;
   } catch (error) {
     console.error("POST Error:", error);
