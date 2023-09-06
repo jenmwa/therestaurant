@@ -23,6 +23,7 @@ export default function RootLayout({
 }) {
   const [restaurant, dispatch] = useReducer(
     RestaurantReducer,
+
     {} as IRestaurant
   );
 
@@ -41,7 +42,7 @@ export default function RootLayout({
           <RestaurantDispatchContext.Provider value={dispatch}>
             <Header />
             {children}
-            <Footer></Footer>
+            <Footer />
           </RestaurantDispatchContext.Provider>
         </RestaurantContext.Provider>
       </body>
