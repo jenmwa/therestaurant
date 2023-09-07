@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { CreateBooking } from "../models/CreateBooking";
 import { ShowBookTableForm } from "./ShowBookTableForm";
+import { getBookings } from "../services/BookingService";
 
 export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
   const [userDate, setUserDate] = useState("");
@@ -43,6 +44,7 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
       "check availability for : ",
       userGuests + " guests, " + userDate
     );
+    getBookings(restaurantId);
     setIsGuestFormSubmitted(true);
   };
 
