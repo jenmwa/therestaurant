@@ -1,15 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { NewBooking } from "../models/NewBooking";
 
-class UserBookingData {
-  constructor(
-    public restaurantId: string | undefined,
-    public date: string,
-    public numberOfGuests: number,
-    public time: string | null
-  ) {}
-}
-
-export const BookTableForm = ({ restaurantId }: { restaurantId?: string }) => {
+export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
   const [userDate, setUserDate] = useState("");
   const [userGuests, setUserGuests] = useState(0);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
@@ -44,13 +36,13 @@ export const BookTableForm = ({ restaurantId }: { restaurantId?: string }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const booking = new UserBookingData(
+    const booking = new NewBooking(
       restaurantId,
       userDate,
-      userGuests,
-      selectedTime
+      selectedTime,
+      userGuests
     );
-    console.log(booking);
+    console.log("confirmed booking: ", booking);
   };
 
   return (
