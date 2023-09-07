@@ -20,36 +20,32 @@ export const TimeSelectionForm = ({
   return (
     <>
       <form className="form--book-table" onSubmit={handleBooking}>
-        <>
-          Choose your time:
-          <div className="btn-wrapper">
-            <button
-              className={`time-btn ${
-                selectedTime === "18:00" ? "selected" : ""
-              }`}
-              onClick={() => handleTime("18:00")}
-            >
-              18:00
-            </button>
-            <button
-              className={`time-btn ${
-                selectedTime === "21:00" ? "selected" : ""
-              }`}
-              onClick={() => handleTime("21:00")}
-            >
-              21:00
-            </button>
-          </div>
+        Choose your time:
+        <div className="btn-wrapper">
+          <button
+            className={`time-btn ${selectedTime === "18:00" ? "selected" : ""}`}
+            onClick={() => handleTime("18:00")}
+          >
+            18:00
+          </button>
+          <button
+            className={`time-btn ${selectedTime === "21:00" ? "selected" : ""}`}
+            onClick={() => handleTime("21:00")}
+          >
+            21:00
+          </button>
+        </div>
+        {selectedTime && (
           <div className="confirmation-div">
             <span>Your Booking:</span>
             <p>Selected Date: {userDate}</p>
             <p>Numbers of Guests: {userGuests}</p>
             <p>Selected Time: {selectedTime}</p>
           </div>
-          <button type="submit" className="submit-btn" disabled={!isTimeSet}>
-            Confirm Booking
-          </button>
-        </>
+        )}
+        <button type="submit" className="submit-btn" disabled={!isTimeSet}>
+          Continue with Booking
+        </button>
       </form>
     </>
   );
