@@ -44,8 +44,8 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
       "check availability for : ",
       userGuests + " guests, " + userDate
     );
-    // getBookings(restaurantId);
-    getBookings("623b85d54396b96c57bde7c3");
+    getBookings(restaurantId);
+    // getBookings("623b85d54396b96c57bde7c3");
 
     setIsGuestFormSubmitted(true);
   };
@@ -58,9 +58,13 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
       selectedTime,
       userGuests
     );
-    console.log("confirmed booking: ", booking);
+    console.log(
+      `confirmed booking: ${JSON.stringify(
+        booking
+      )}, lets continue with customer!`
+    );
     //OBS! för att CREATEBOOKING MÅSTE VI HA CUSTOMER-OBJEKTET!
-    createBookings(booking);
+    // createBookings(booking);
     setIsTimeSet(true);
   };
 
