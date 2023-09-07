@@ -7,6 +7,8 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
   const [userGuests, setUserGuests] = useState(0);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [isValid, setIsValid] = useState(false);
+  const [isTimeSet, setIsTimeSet] = useState(false);
+  const [isGuestFormSubmitted, setIsGuestFormSubmitted] = useState(false);
 
   const handleDate = (e: ChangeEvent<HTMLInputElement>) => {
     const date = e.target.value;
@@ -37,6 +39,15 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    console.log(
+      "check availability for : ",
+      userGuests + " guests, " + userDate
+    );
+    setIsGuestFormSubmitted(true);
+  };
+
+  const handleBooking = (e: FormEvent) => {
+    e.preventDefault();
     const booking = new CreateBooking(
       restaurantId,
       userDate,
@@ -44,6 +55,7 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
       userGuests
     );
     console.log("confirmed booking: ", booking);
+    setIsTimeSet(true);
   };
 
   return (
@@ -53,10 +65,13 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
         handleGuests={handleGuests}
         handleTime={handleTime}
         handleDate={handleDate}
+        handleBooking={handleBooking}
         userDate={userDate}
         userGuests={userGuests}
         selectedTime={selectedTime}
         isValid={isValid}
+        isTimeSet={isTimeSet}
+        isGuestFormSubmitted={isGuestFormSubmitted}
       ></ShowBookTableForm>
     </>
   );

@@ -1,21 +1,26 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, FormEvent } from "react";
 
 interface IGuestSelectionFormProps {
   handleGuests: (e: ChangeEvent<HTMLSelectElement>) => void;
   handleDate: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (e: FormEvent) => void;
   userGuests: number;
   userDate: string;
+  isValid: boolean;
 }
 
 export const GuestSelectionForm = ({
-  userGuests,
-  handleGuests,
-  userDate,
   handleDate,
+  handleSubmit,
+  handleGuests,
+  userGuests,
+  userDate,
+  isValid,
 }: IGuestSelectionFormProps) => {
   return (
     <>
-      <div>
+      <form className="form--book-table" onSubmit={handleSubmit}>
+        <h3>lets book a table!</h3>
         <div className="select-dropdown">
           <label>
             Number of Guests:<br></br>
@@ -39,7 +44,10 @@ export const GuestSelectionForm = ({
           Select Date:<br></br>
           <input type="date" value={userDate} onChange={handleDate}></input>
         </label>
-      </div>
+        <button type="submit" className="submit-btn" disabled={!isValid}>
+          Check Availability
+        </button>
+      </form>
     </>
   );
 };
