@@ -1,5 +1,6 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { CreateBooking } from "../models/CreateBooking";
+import { ShowBookTableForm } from "./ShowBookTableForm";
 
 export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
   const [userDate, setUserDate] = useState("");
@@ -47,7 +48,7 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
 
   return (
     <>
-      <form className="form--book-table" onSubmit={handleSubmit}>
+      {/* <form className="form--book-table" onSubmit={handleSubmit}>
         <h3>lets book a table!</h3>
         <label>
           Select Date:<br></br>
@@ -111,7 +112,17 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
         >
           Confirm Booking
         </button>
-      </form>
+      </form> */}
+      <ShowBookTableForm
+        handleSubmit={handleSubmit}
+        handleGuests={handleGuests}
+        handleTime={handleTime}
+        handleDate={handleDate}
+        userDate={userDate}
+        userGuests={userGuests}
+        selectedTime={selectedTime}
+        isValid={isValid}
+      ></ShowBookTableForm>
     </>
   );
 };
