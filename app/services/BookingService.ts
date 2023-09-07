@@ -1,16 +1,9 @@
 import axios from "axios"
 import { checkAvailability } from "../components/functions/checkAvailability";
+import { CreateBooking } from "../models/CreateBooking";
+import { IBooking } from "../models/IBooking";
 
 const BASE_URL = "https://school-restaurant-api.azurewebsites.net/booking/restaurant/"
-
-export interface IBooking {
-  id: string,
-  restaurantId: string,
-  date: string,
-  time: string,
-  numberOfGuests: number,
-  customerId: string
-}
 
 export const getBookings = async (restaurantId: string) => {
   try {
@@ -26,5 +19,17 @@ export const getBookings = async (restaurantId: string) => {
     console.error("Error:", error);
   }
 };
+
+export const createBookings = async (booking: CreateBooking) => {
+  try {
+    const response = await axios.post<CreateBooking>(BASE_URL + booking.restaurantId, booking);
+    console.log('booking created:', response.data)
+    return response.data
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+
 
 
