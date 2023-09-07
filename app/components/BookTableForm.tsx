@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { NewBooking } from "../models/NewBooking";
+import { CreateBooking } from "../models/CreateBooking";
 
 export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
   const [userDate, setUserDate] = useState("");
@@ -36,7 +36,7 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const booking = new NewBooking(
+    const booking = new CreateBooking(
       restaurantId,
       userDate,
       selectedTime,
