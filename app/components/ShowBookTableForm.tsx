@@ -1,4 +1,6 @@
 import { ChangeEvent, FormEvent } from "react";
+import { TimeSelectionForm } from "./TimeSelectionForm";
+import { GuestSelectionForm } from "./GuestSelectionForm";
 
 interface IShowBookTableFormProps {
   handleSubmit: (e: FormEvent) => void;
@@ -13,9 +15,9 @@ interface IShowBookTableFormProps {
 
 export const ShowBookTableForm = ({
   handleSubmit,
+  handleDate,
   handleGuests,
   handleTime,
-  handleDate,
   userDate,
   userGuests,
   selectedTime,
@@ -25,12 +27,7 @@ export const ShowBookTableForm = ({
     <>
       <form className="form--book-table" onSubmit={handleSubmit}>
         <h3>lets book a table!</h3>
-        <label>
-          Select Date:<br></br>
-          <input type="date" value={userDate} onChange={handleDate}></input>
-        </label>
-
-        <div className="select-dropdown">
+        {/* <div className="select-dropdown">
           <label>
             Number of Guests:<br></br>
             <select
@@ -49,43 +46,39 @@ export const ShowBookTableForm = ({
           </label>
         </div>
 
-        {isValid && (
-          <>
-            Choose your time:
-            <div className="btn-wrapper">
-              <button
-                className={`time-btn ${
-                  selectedTime === "18:00" ? "selected" : ""
-                }`}
-                onClick={() => handleTime("18:00")}
-              >
-                18:00
-              </button>
-              <button
-                className={`time-btn ${
-                  selectedTime === "21:00" ? "selected" : ""
-                }`}
-                onClick={() => handleTime("21:00")}
-              >
-                21:00
-              </button>
-            </div>
-          </>
-        )}
-        {selectedTime && (
+        <label>
+          Select Date:<br></br>
+          <input type="date" value={userDate} onChange={handleDate}></input>
+        </label> */}
+
+        <GuestSelectionForm
+          handleDate={handleDate}
+          handleGuests={handleGuests}
+          userDate={userDate}
+          userGuests={userGuests}
+        ></GuestSelectionForm>
+
+        {/* <TimeSelectionForm
+          handleTime={handleTime}
+          selectedTime={selectedTime}
+          isValid={isValid}
+        /> */}
+
+        {/* {isValid && selectedTime && (
           <div className="confirmation-div">
             <span>Your Booking:</span>
             <p>Selected Date: {userDate}</p>
             <p>Numbers of Guests: {userGuests}</p>
             <p>Selected Time: {selectedTime}</p>
           </div>
-        )}
+        )} */}
+
         <button
           type="submit"
           className="submit-btn"
           disabled={!isValid || !selectedTime}
         >
-          Confirm Booking
+          Check Availability
         </button>
       </form>
     </>
