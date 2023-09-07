@@ -20,7 +20,6 @@ export const TimeSelectionForm = ({
   return (
     <>
       <form className="form--book-table" onSubmit={handleBooking}>
-        {/* {isTimeSet && ( */}
         <>
           Choose your time:
           <div className="btn-wrapper">
@@ -51,7 +50,6 @@ export const TimeSelectionForm = ({
             Confirm Booking
           </button>
         </>
-        {/* )} */}
       </form>
     </>
   );
