@@ -86,19 +86,3 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
     </>
   );
 };
-
-// POST
-// 'http://localhost:3000/booking/create' \
-// [
-//   {
-//     "restaurantId": "623b85d54396b96c57bde7c3",
-//     "date": "2022-01-01",
-//     "time": "18:00",
-//     "numberOfGuests": 4,
-//     "customer": {
-//       "name": "Franzén",
-//       "lastname": "Sebastian",
-//       "email": "someone@somedomain.com",
-//       "phone": "070-1112233"
-//     }
-//   }
