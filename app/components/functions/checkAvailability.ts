@@ -1,6 +1,7 @@
-import { IBooking } from "@/app/services/BookingService";
+import { IBooking } from "@/app/models/IBooking"
 
-const testObject = [
+
+export const testGETObject = [
   {
     "_id": "64d46dde4f6c87df0eff5817",
     "restaurantId": "623b85d54396b96c57bde7c3",
@@ -53,7 +54,13 @@ const testObject = [
 
 // export const checkAvailability = (bookings: IBooking[]) => {
 export const checkAvailability = (testObject: IBooking[]) => {
-
-  console.log(testObject)
+  console.log(testObject.length)
+  if (testGETObject.length >= 15) {
+    console.log('we have to check if its the same date')
+    // om det stämmer, så måste vi kolla OM datumen är samma.
+    //och om detta stämmer, så måste vi kolla OM Tiderna är samma.
+    // OM detta stämmer, SESSIONEN FULL!
+    // disabla knappen med samma värde som tiderna.
+  }
 
 }

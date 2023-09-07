@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { CreateBooking } from "../models/CreateBooking";
 import { ShowBookTableForm } from "./ShowBookTableForm";
-import { getBookings } from "../services/BookingService";
+import { createBookings, getBookings } from "../services/BookingService";
 
 export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
   const [userDate, setUserDate] = useState("");
@@ -44,7 +44,9 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
       "check availability for : ",
       userGuests + " guests, " + userDate
     );
-    getBookings(restaurantId);
+    // getBookings(restaurantId);
+    getBookings("623b85d54396b96c57bde7c3");
+
     setIsGuestFormSubmitted(true);
   };
 
@@ -57,6 +59,8 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
       userGuests
     );
     console.log("confirmed booking: ", booking);
+    //OBS! för att CREATEBOOKING MÅSTE VI HA CUSTOMER-OBJEKTET!
+    createBookings(booking);
     setIsTimeSet(true);
   };
 
