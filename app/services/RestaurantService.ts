@@ -20,10 +20,12 @@ const postData: ICreateRestaurant = {
 
 export const createRestaurant = async () => {
   try {
-    const response = await axios.post(postUrl, postData);
-    console.log("POST Response:", response.data);
+    // Add hardcoded restaurant ID to our special createRestaurant stuff.
+    
+    // const response = await axios.post(postUrl, postData);
+    // console.log("POST Response:", response.data);
 
-    const id = response.data;
+    const id = '64fad0675eecc88857a6a3a2';
     console.log(id);
     const restaurant = await getRestaurant(id);
     console.log(restaurant);

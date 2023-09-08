@@ -10,10 +10,10 @@ export const getBookings = async (restaurantId: string) => {
     const response = await axios.get<IBooking[]>(BASE_URL + `restaurant/${restaurantId}`);
     console.log(response.data)
     const bookingData = response.data
-    if (response.data.length === 0) {
-      return bookingData;
-    } else {
+    if (response.data.length >= 15) {
       checkAvailability(bookingData)
+    } else {
+      return bookingData;
     }
   } catch (error) {
     console.error("Error:", error);

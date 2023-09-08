@@ -1,44 +1,32 @@
 "use client";
 
 import "../style/customerForm.scss";
-import { createNewCustomer } from "../services/CustomerService";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent } from "react";
 import { CreateCustomer } from "../models/CreateCustomer";
 import { ICustomer } from "../models/ICustomer";
 
-export function CustomerForm() {
-  const [customer, setCustomer] = useState<CreateCustomer>({
-    name: "",
-    lastname: "",
-    email: "",
-    phone: "",
-  });
+interface ICustomerFormProps {
+  handleCreateCustomer: (e: FormEvent) => void;
+  handleChangeCustomerForm: (e: ChangeEvent<HTMLInputElement>) => void;
+  customerInput: CreateCustomer;
+  customer: ICustomer | undefined;
+}
 
-  const [newCustomer, setNewCustomer] = useState<ICustomer>();
-
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    const name = e.target.name;
-    setCustomer({ ...customer, [name]: e.target.value });
-  }
-
-  async function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-    const getCustomerData = await createNewCustomer(customer);
-    setNewCustomer(getCustomerData);
-    console.log("Object from submit", customer);
-  }
-  console.log(customer);
-  console.log(newCustomer);
-
+export function CustomerForm({
+  handleCreateCustomer,
+  handleChangeCustomerForm,
+  customerInput,
+  customer,
+}: ICustomerFormProps) {
   return (
     <section className="customerForm">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleCreateCustomer}>
         <label>
           Name:
           <input
             type="text"
-            value={customer.name}
-            onChange={handleChange}
+            value={customerInput.name}
+            onChange={handleChangeCustomerForm}
             name="name"
             autoFocus
           />
@@ -47,8 +35,8 @@ export function CustomerForm() {
           Lastname:
           <input
             type="text"
-            value={customer.lastname}
-            onChange={handleChange}
+            value={customerInput.lastname}
+            onChange={handleChangeCustomerForm}
             name="lastname"
           />
         </label>
@@ -56,8 +44,8 @@ export function CustomerForm() {
           Email:
           <input
             type="email"
-            value={customer.email}
-            onChange={handleChange}
+            value={customerInput.email}
+            onChange={handleChangeCustomerForm}
             name="email"
           />
         </label>
@@ -65,8 +53,8 @@ export function CustomerForm() {
           Phone:
           <input
             type="tel"
-            value={customer.phone}
-            onChange={handleChange}
+            value={customerInput.phone}
+            onChange={handleChangeCustomerForm}
             name="phone"
           />
         </label>

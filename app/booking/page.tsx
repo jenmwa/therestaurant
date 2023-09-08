@@ -14,7 +14,6 @@ export function Booking() {
       <section className="booking">
         <h2>Booking</h2>
         <BookTableForm restaurantId={_id}></BookTableForm>
-        <CustomerForm></CustomerForm>
       </section>
     </>
   );

@@ -2,6 +2,10 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { CreateBooking } from "../models/CreateBooking";
 import { ShowBookTableForm } from "./ShowBookTableForm";
 import { createBookings, getBookings } from "../services/BookingService";
+import { CustomerForm } from "./CustomerForm";
+import { createNewCustomer } from "../services/CustomerService";
+import { CreateCustomer } from "../models/CreateCustomer";
+import { ICustomer } from "../models/ICustomer";
 
 export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
   const [userDate, setUserDate] = useState("");
@@ -10,7 +14,18 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
   const [isValid, setIsValid] = useState(false);
   const [isTimeSet, setIsTimeSet] = useState(false);
   const [isGuestFormSubmitted, setIsGuestFormSubmitted] = useState(false);
+  const [customerInput, setCustomerInput] = useState<CreateCustomer>({
+    name: "",
+    lastname: "",
+    email: "",
+    phone: "",
+  });
+  const [customer, setCustomer] = useState<ICustomer>();
 
+  function handleChangeCustomerForm(e: ChangeEvent<HTMLInputElement>) {
+    const name = e.target.name;
+    setCustomerInput({ ...customerInput, [name]: e.target.value });
+  }
   const handleDate = (e: ChangeEvent<HTMLInputElement>) => {
     const date = e.target.value;
     console.log(date);
@@ -50,23 +65,37 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
     setIsGuestFormSubmitted(true);
   };
 
+  async function handleCreateCustomer(e: FormEvent) {
+    e.preventDefault();
+    const getCustomerData = await createNewCustomer(customerInput);
+    setCustomer(getCustomerData);
+    console.log("Object from submit", customerInput);
+
+    if (customer) {
+      const booking = new CreateBooking(
+        restaurantId,
+        userDate,
+        selectedTime,
+        userGuests,
+        customer
+      );
+      console.log(
+        `confirmed booking: ${JSON.stringify(
+          booking
+        )}, lets continue with customer!`
+      );
+      createBookings(booking);
+      //rendera tack-för-din-bokning
+    }
+  }
+
   const handleBooking = (e: FormEvent) => {
     e.preventDefault();
-    const booking = new CreateBooking(
-      restaurantId,
-      userDate,
-      selectedTime,
-      userGuests
-    );
-    console.log(
-      `confirmed booking: ${JSON.stringify(
-        booking
-      )}, lets continue with customer!`
-    );
-    //OBS! för att CREATEBOOKING MÅSTE VI HA CUSTOMER-OBJEKTET!
-    // createBookings(booking);
     setIsTimeSet(true);
   };
+
+  console.log(customerInput);
+  console.log(customer);
 
   return (
     <>
@@ -83,6 +112,12 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
         isTimeSet={isTimeSet}
         isGuestFormSubmitted={isGuestFormSubmitted}
       ></ShowBookTableForm>
+      <CustomerForm
+        handleCreateCustomer={handleCreateCustomer}
+        handleChangeCustomerForm={handleChangeCustomerForm}
+        customerInput={customerInput}
+        customer={customer}
+      ></CustomerForm>
     </>
   );
 };
