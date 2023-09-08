@@ -29,10 +29,13 @@ export function Admin() {
   const handleEditClick = (booking: IBooking) => {
     console.log("click Edit on: ", booking);
     router.push(`/admin/booking/+${booking._id}`);
+    //till editläge direkt?
   };
 
   const handleDeleteClick = (id: string) => {
     console.log("click Delete on: ", id);
+    // gör en servicefil
+    // skicka en delete till: https://school-restaurant-api.azurewebsites.net/booking/delete/:id
   };
 
   console.log("From admin bookings", bookings);
