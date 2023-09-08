@@ -12,7 +12,7 @@ async function getData(id: string) {
 
   // return res.json()
   return {
-    foobar: "foobar",
+    welcome: "Booking: " + id,
   };
 }
 
@@ -20,7 +20,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const booking = await getData(params.id);
   return (
     <div style={{ marginTop: "200px" }}>
-      My Post: {params.id}, {booking.foobar}
+      My Post: {params.id}, {booking.welcome}
     </div>
   );
 }

@@ -30,7 +30,17 @@ export const createBookings = async (booking: CreateBooking) => {
   }
 };
 
+// https://school-restaurant-api.azurewebsites.net/booking/delete/:id
 
+export async function deleteBooking(id: string) {
+  try {
+    const response = await axios.delete(`${BASE_URL}delete/${id}`)
+    console.log('delete service', response.data);
+  } catch (error) {
+    console.log('Error', error);
+    
+  }
+}
 
 
 // import axios from "axios";

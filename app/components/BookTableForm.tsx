@@ -71,6 +71,9 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
     setCustomer(getCustomerData);
     console.log("Object from submit", customerInput);
 
+    //TODO: Submit form uppdaterar inte state vilket gör customer till false vid första klick. Fungerar sedan vid andra klick.
+    // refaktorera och bygg om submit funktionalitet.
+
     if (customer) {
       const booking = new CreateBooking(
         restaurantId,

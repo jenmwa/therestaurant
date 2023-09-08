@@ -1,44 +1,52 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import "../style/admin.scss";
 import { IRestaurant } from "../models/IRestaurant";
 import { RestaurantContext } from "../contexts/RestaurantContext";
-import { getBookings } from "../services/BookingService";
-import Link from "next/link";
+import { deleteBooking, getBookings } from "../services/BookingService";
+import { IBooking } from "../models/IBooking";
+import { AdminBookings } from "../components/AdminBookings";
+import { useRouter } from "next/navigation";
 
 export function Admin() {
   const restaurant = useContext<IRestaurant>(RestaurantContext);
-  const [bookings, setBookings] = useState([]);
-  useEffect(() => {
+  const [bookings, setBookings] = useState<IBooking[]>([]);
+  const router = useRouter();
+
+  const handleAllBookings = () => {
     const id = restaurant._id;
     if (id) {
       (async () => {
         const response = await getBookings(id);
-        setBookings(response);
+        if (response) {
+          setBookings(response);
+        }
       })();
     }
-    console.log(restaurant);
-  }, [restaurant]);
-  // getBookings
-  // deleteBooking
-  // editBooking
+  };
+
+  const handleEditClick = (booking: IBooking) => {
+    console.log("click Edit on: ", booking);
+    router.push(`/admin/booking/+${booking._id}`);
+    //till editläge direkt?
+  };
+
+  const handleDeleteClick = (id: string) => {
+    console.log("click Delete on: ", id);
+    deleteBooking(id);
+    // liveuppdatering useEffect??
+  };
+
+  console.log("From admin bookings", bookings);
 
   return (
-    <section className="admin-wrapper">
-      <h1>Admin</h1>
-      {/* hämta bokningar från booking */}
-      <button>Visa alla bokningar</button>
-      {/* visa bokningar via namn på bokningen i en lista */}
-      <ul>
-        {bookings?.map((booking) => (
-          <li key={booking._id}>
-            <Link href={`/admin/booking/${booking._id}`}>Visa bokning</Link>
-          </li>
-        ))}
-      </ul>
-      {/* när man trycker på en bokning så får man fram ett kort med information som går att editera  */}
-    </section>
+    <AdminBookings
+      bookings={bookings}
+      handleAllBookings={handleAllBookings}
+      handleEditClick={handleEditClick}
+      handleDeleteClick={handleDeleteClick}
+    ></AdminBookings>
   );
 }
 
