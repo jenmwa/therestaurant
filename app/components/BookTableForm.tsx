@@ -59,8 +59,8 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
       "check availability for : ",
       userGuests + " guests, " + userDate
     );
-    // getBookings(restaurantId);
-    getBookings("623b85d54396b96c57bde7c3");
+    getBookings(restaurantId);
+    // getBookings("623b85d54396b96c57bde7c3");
 
     setIsGuestFormSubmitted(true);
   };
@@ -70,10 +70,7 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
     const getCustomerData = await createNewCustomer(customerInput);
     setCustomer(getCustomerData);
     console.log("Object from submit", customerInput);
-  }
 
-  const handleBooking = (e: FormEvent) => {
-    e.preventDefault();
     if (customer) {
       const booking = new CreateBooking(
         restaurantId,
@@ -87,9 +84,13 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
           booking
         )}, lets continue with customer!`
       );
+      createBookings(booking);
+      //rendera tack-för-din-bokning
     }
-    //OBS! för att CREATEBOOKING MÅSTE VI HA CUSTOMER-OBJEKTET!
-    // createBookings(booking);
+  }
+
+  const handleBooking = (e: FormEvent) => {
+    e.preventDefault();
     setIsTimeSet(true);
   };
 
