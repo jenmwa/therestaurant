@@ -1,0 +1,26 @@
+@import "../style/variables.scss";
+
+.admin-wrapper {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  background-color: $accent2;
+  color: $grey700;
+  padding: 0.4rem 0.8rem;
+  margin-right: 1rem;
+  font-weight: bold;
+  transition-timing-function: ease-out;
+  transition: 0.2s;
+
+  &:hover {
+    outline: 4px solid $accent3;
+    background-color: transparent;
+    color: $accent4;
+    transition-timing-function: ease-in;
+    transition: 0.5s;
+  }
+}
