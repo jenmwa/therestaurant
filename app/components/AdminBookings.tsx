@@ -1,18 +1,32 @@
 import Link from "next/link";
 import { IBooking } from "../models/IBooking";
+import { useContext } from "react";
+import { RestaurantContext } from "../contexts/RestaurantContext";
+import { IRestaurant } from "../models/IRestaurant";
+import { getBookings } from "../services/BookingService";
 
 interface IAdminBookingsProps {
   bookings: IBooking[];
+  handleAllBookings: () => void;
+  handleEditClick: (booking: IBooking) => void;
+  handleDeleteClick: (id: string) => void;
 }
 
-export const AdminBookings = ({ bookings }: IAdminBookingsProps) => {
+export const AdminBookings = ({
+  bookings,
+  handleAllBookings,
+  handleEditClick,
+  handleDeleteClick,
+}: IAdminBookingsProps) => {
+  const restaurant = useContext<IRestaurant>(RestaurantContext);
+
   return (
     <>
       {" "}
       <section className="admin-wrapper">
         <h1>Admin</h1>
         {/* hämta bokningar från booking */}
-        <button>Visa alla bokningar</button>
+        <button onClick={handleAllBookings}>Visa alla bokningar</button>
         {/* visa bokningar via namn på bokningen i en lista */}
         <ul>
           {bookings.map((booking) => (
@@ -25,6 +39,10 @@ export const AdminBookings = ({ bookings }: IAdminBookingsProps) => {
                 </span>
                 <span>{booking.numberOfGuests}</span>
               </Link>
+              <button onClick={() => handleEditClick(booking)}>Edit</button>
+              <button onClick={() => handleDeleteClick(booking._id)}>
+                Delete
+              </button>
             </li>
           ))}
         </ul>

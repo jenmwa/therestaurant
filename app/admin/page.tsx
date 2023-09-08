@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import "../style/admin.scss";
 import { IRestaurant } from "../models/IRestaurant";
 import { RestaurantContext } from "../contexts/RestaurantContext";
@@ -12,7 +12,7 @@ export function Admin() {
   const restaurant = useContext<IRestaurant>(RestaurantContext);
   const [bookings, setBookings] = useState<IBooking[]>([]);
 
-  useEffect(() => {
+  const handleAllBookings = () => {
     const id = restaurant._id;
     if (id) {
       (async () => {
@@ -22,15 +22,26 @@ export function Admin() {
         }
       })();
     }
-    console.log(restaurant);
-  }, [restaurant]);
-  // getBookings
-  // deleteBooking
-  // editBooking
+  };
+
+  const handleEditClick = (booking: IBooking) => {
+    console.log("click Edit on: ", booking);
+  };
+
+  const handleDeleteClick = (id: string) => {
+    console.log("click Delete on: ", id);
+  };
 
   console.log("From admin bookings", bookings);
 
-  return <AdminBookings bookings={bookings}></AdminBookings>;
+  return (
+    <AdminBookings
+      bookings={bookings}
+      handleAllBookings={handleAllBookings}
+      handleEditClick={handleEditClick}
+      handleDeleteClick={handleDeleteClick}
+    ></AdminBookings>
+  );
 }
 
 export default Admin;
