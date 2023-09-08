@@ -7,10 +7,12 @@ import { RestaurantContext } from "../contexts/RestaurantContext";
 import { getBookings } from "../services/BookingService";
 import { IBooking } from "../models/IBooking";
 import { AdminBookings } from "../components/AdminBookings";
+import { useRouter } from "next/navigation";
 
 export function Admin() {
   const restaurant = useContext<IRestaurant>(RestaurantContext);
   const [bookings, setBookings] = useState<IBooking[]>([]);
+  const router = useRouter();
 
   const handleAllBookings = () => {
     const id = restaurant._id;
@@ -26,6 +28,7 @@ export function Admin() {
 
   const handleEditClick = (booking: IBooking) => {
     console.log("click Edit on: ", booking);
+    router.push(`/admin/booking/+${booking._id}`);
   };
 
   const handleDeleteClick = (id: string) => {
