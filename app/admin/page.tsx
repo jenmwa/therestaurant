@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import "../style/admin.scss";
 import { IRestaurant } from "../models/IRestaurant";
 import { RestaurantContext } from "../contexts/RestaurantContext";
-import { getBookings } from "../services/BookingService";
+import { deleteBooking, getBookings } from "../services/BookingService";
 import { IBooking } from "../models/IBooking";
 import { AdminBookings } from "../components/AdminBookings";
 import { useRouter } from "next/navigation";
@@ -34,8 +34,8 @@ export function Admin() {
 
   const handleDeleteClick = (id: string) => {
     console.log("click Delete on: ", id);
-    // gör en servicefil
-    // skicka en delete till: https://school-restaurant-api.azurewebsites.net/booking/delete/:id
+    deleteBooking(id);
+    // liveuppdatering useEffect??
   };
 
   console.log("From admin bookings", bookings);
