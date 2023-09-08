@@ -6,7 +6,7 @@ export class CreateBooking {
     public date: string,
     public time: string | null,
     public numberOfGuests: number,
-    // public customer: ICustomer
+    public customer: ICustomer
   ) { }
 
 }
