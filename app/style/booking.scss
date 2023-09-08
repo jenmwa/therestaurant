@@ -1,0 +1,150 @@
+@import "../style/variables.scss";
+
+.booking {
+  min-height: 100vh;
+  padding: 10rem 1rem 1rem 1rem;
+
+  h2 {
+    font-family: $FontHeading;
+    font-size: 4rem;
+    color: $accent1;
+  }
+
+  h3 {
+    margin-bottom: 2rem;
+  }
+
+  p {
+    margin-inline: 1rem;
+    color: $grey300;
+  }
+
+  .submit-btn {
+    display: inline-block;
+    border: none;
+    margin-top: 2rem;
+    background-color: $accent2;
+    color: $grey700;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.8rem 1.6rem;
+    transition-timing-function: ease-out;
+    transition: 0.2s;
+    cursor: pointer;
+    font-weight: 700;
+
+    &:disabled {
+      cursor: none;
+      background-color: black;
+      border: 4px solid $grey300;
+      color: $grey300;
+
+      &:hover {
+        cursor: auto;
+        border: 4px solid $grey300;
+        outline: none;
+        color: $grey300;
+      }
+    }
+
+    &:hover {
+      outline: 4px solid $accent3;
+      background-color: transparent;
+      color: $accent4;
+      transition-timing-function: ease-in;
+      transition: 0.5s;
+    }
+  }
+
+  .btn-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  .time-btn {
+    width: 45%;
+    display: inline;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.8rem 1.6rem;
+    cursor: pointer;
+    background-color: black;
+    color: $accent4;
+    border: 4px solid $accent4;
+    font-weight: 300;
+  }
+
+  .time-btn.selected {
+    background-color: $accent4;
+    color: $grey700;
+    font-weight: bold;
+  }
+
+  form {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid $accent2;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  label {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  input[type="date"] {
+    width: 100%;
+    margin: 0;
+    background-color: $accent4;
+    padding: 1rem;
+    font-family: $FontParagraph;
+    color: $grey500;
+    font-size: 18px;
+    border: none;
+    outline: none;
+  }
+
+  ::-webkit-calendar-picker-indicator {
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+
+  .custom-select {
+    position: relative;
+    width: 150px;
+  }
+
+  select {
+    width: 100%;
+    padding: 1rem;
+    background-color: $accent4;
+    color: $grey500;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .time-div {
+    width: 40%;
+    display: inline;
+    outline: 4px solid $accent4;
+    background-color: transparent;
+    color: $accent4;
+    padding: 0.4rem 0.8rem;
+    font-weight: bold;
+  }
+
+  .confirmation-div {
+    margin-top: 2rem;
+
+    p {
+      margin: 0;
+    }
+  }
+}
