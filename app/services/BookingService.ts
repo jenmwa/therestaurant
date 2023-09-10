@@ -55,7 +55,7 @@ export async function deleteBooking(id: string) {
 //   return response.data;
 // };
 
-export const getBookingById = async (id: string) => {
+export const getBookingById = async (id: string): Promise<IBooking> => {
   const response = await axios.get(`${BASE_URL}/${id}`);
   return response.data[0];
 };
