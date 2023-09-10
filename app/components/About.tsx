@@ -3,6 +3,7 @@ import "../style/about.scss";
 import { RestaurantContext } from "../contexts/RestaurantContext";
 import { IRestaurant } from "../models/IRestaurant";
 import { Section } from "./styled/Sections";
+import { H1 } from "./styled/Headings";
 
 export const About = () => {
   const restaurant = useContext<IRestaurant>(RestaurantContext);
@@ -10,7 +11,7 @@ export const About = () => {
   return (
     <>
       <Section>
-        <h1>{restaurant.name}</h1>
+        <H1>{restaurant.name}</H1>
       </Section>
     </>
   );

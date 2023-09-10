@@ -5,6 +5,7 @@ import { BookTableForm } from "../components/BookTableForm";
 import { useContext } from "react";
 import { RestaurantContext } from "../contexts/RestaurantContext";
 import { Section } from "../components/styled/Sections";
+import { H1 } from "../components/styled/Headings";
 
 export function Booking() {
   const { _id } = useContext(RestaurantContext);
@@ -12,7 +13,7 @@ export function Booking() {
   return (
     <>
       <Section>
-        <h2>Booking</h2>
+        <H1>Booking</H1>
         <BookTableForm restaurantId={_id}></BookTableForm>
       </Section>
     </>
