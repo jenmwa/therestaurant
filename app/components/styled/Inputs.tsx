@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { FontParagraph, accent4, grey100, grey500 } from "./variables";
 
+export const Label = styled.label`
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 1rem;
+`;
+
 export const StyledInput = styled.input`
   font-family: ${FontParagraph};
   color: ${grey500};

@@ -1,8 +1,7 @@
 import { ChangeEvent, FormEvent } from "react";
-import { H4 } from "./styled/Headings";
 import { Form } from "./styled/Forms";
 import { SubmitButton } from "./styled/Buttons";
-import { StyledInput } from "./styled/Inputs";
+import { Label, StyledInput } from "./styled/Inputs";
 
 interface IGuestSelectionFormProps {
   handleGuests: (e: ChangeEvent<HTMLSelectElement>) => void;
@@ -24,10 +23,10 @@ export const GuestSelectionForm = ({
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        <H4>lets book a table!</H4>
+        <span className="form-intro">lets book a table!</span>
         <div className="select-dropdown">
-          <label>
-            Number of Guests:<br></br>
+          <Label>
+            Number of Guests:
             <select
               name="number of guests"
               value={userGuests}
@@ -41,17 +40,17 @@ export const GuestSelectionForm = ({
               <option value="5">5</option>
               <option value="6">6</option>
             </select>
-          </label>
+          </Label>
         </div>
 
-        <label>
-          Select Date:<br></br>
+        <Label>
+          Select Date:
           <StyledInput
             type="date"
             value={userDate}
             onChange={handleDate}
           ></StyledInput>
-        </label>
+        </Label>
         <SubmitButton type="submit" disabled={!isValid}>
           Check Availability
         </SubmitButton>

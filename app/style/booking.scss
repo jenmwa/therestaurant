@@ -1,6 +1,10 @@
 @import "../style/variables.scss";
 
-h3 {
+.form-intro {
+  font-size: 1.5rem;
+  font-family: $FontParagraph;
+  font-weight: bold;
+  color: $accent2;
   margin-bottom: 2rem;
 }
 
@@ -14,31 +18,6 @@ p {
   flex-direction: row;
   justify-content: space-between;
   margin-top: 1rem;
-}
-
-.time-btn {
-  width: 45%;
-  display: inline;
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 0.8rem 1.6rem;
-  cursor: pointer;
-  background-color: black;
-  color: $accent4;
-  border: 4px solid $accent4;
-  font-weight: 300;
-}
-
-.time-btn.selected {
-  background-color: $accent4;
-  color: $grey700;
-  font-weight: bold;
-}
-
-label {
-  font-size: 16px;
-  display: block;
-  margin-bottom: 1rem;
 }
 
 select {

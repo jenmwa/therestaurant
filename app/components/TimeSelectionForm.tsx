@@ -1,6 +1,6 @@
 import { FormEvent } from "react";
 import { Form } from "./styled/Forms";
-import { SubmitButton } from "./styled/Buttons";
+import { SubmitButton, TimeButton } from "./styled/Buttons";
 
 interface ITimeSelectionFormProps {
   handleTime: (time: string) => void;
@@ -24,18 +24,18 @@ export const TimeSelectionForm = ({
       <Form onSubmit={handleBooking}>
         Choose your time:
         <div className="btn-wrapper">
-          <button
-            className={`time-btn ${selectedTime === "18:00" ? "selected" : ""}`}
+          <TimeButton
+            isSelected={selectedTime === "18:00"}
             onClick={() => handleTime("18:00")}
           >
             18:00
-          </button>
-          <button
-            className={`time-btn ${selectedTime === "21:00" ? "selected" : ""}`}
+          </TimeButton>
+          <TimeButton
+            isSelected={selectedTime === "21:00"}
             onClick={() => handleTime("21:00")}
           >
             21:00
-          </button>
+          </TimeButton>
         </div>
         {selectedTime && (
           <div className="confirmation-div">
