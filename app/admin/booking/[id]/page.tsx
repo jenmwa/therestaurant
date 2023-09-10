@@ -1,26 +1,24 @@
-import axios from "axios";
+"use client";
 
-async function getData(id: string) {
-  //const res = await axios.get("https://api.example.com/" + id);
-  // // The return value is *not* serialized
-  // // You can return Date, Map, Set, etc.
+import { getBookingById } from "@/app/services/BookingService";
+import { useEffect, useState } from "react";
 
-  // if (!res.ok) {
-  //   // This will activate the closest `error.js` Error Boundary
-  //   throw new Error('Failed to fetch data')
-  // }
+export default function Page({ params }: { params: { id: string } }) {
+  const [booking, setBooking] = useState([]);
 
-  // return res.json()
-  return {
-    welcome: "Booking: " + id,
-  };
-}
+  useEffect(() => {
+    if (params.id) {
+      (async () => {
+        const response = await getBookingById(params.id);
+        console.log(response);
 
-export default async function Page({ params }: { params: { id: string } }) {
-  const booking = await getData(params.id);
+        setBooking(response);
+      })();
+    }
+  }, [params.id]);
   return (
     <div style={{ marginTop: "200px" }}>
-      My Post: {params.id}, {booking.welcome}
+      My Post: {params.id}, Antal gäster {booking.numberOfGuests}
     </div>
   );
 }
