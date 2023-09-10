@@ -1,5 +1,5 @@
 import axios from "axios"
-import { checkAvailability } from "../components/functions/checkAvailability";
+import { checkAvailability } from "../functions/checkAvailability";
 import { CreateBooking } from "../models/CreateBooking";
 import { IBooking } from "../models/IBooking";
 
@@ -38,7 +38,7 @@ export async function deleteBooking(id: string) {
     console.log('delete service', response.data);
   } catch (error) {
     console.log('Error', error);
-    
+
   }
 }
 
