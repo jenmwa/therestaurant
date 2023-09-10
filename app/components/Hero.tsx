@@ -1,10 +1,19 @@
 import "../style/hero.scss";
 
 import Image from "next/image";
-import Link from "next/link";
 import { PrimaryButton, SecondaryButton } from "./styled/Buttons";
+import { useRouter } from "next/navigation";
 
 export const Hero = () => {
+  const router = useRouter();
+
+  const goToBookTable = () => {
+    router.push("/booking");
+  };
+
+  const goToContact = () => {
+    router.push("/contact");
+  };
   return (
     <>
       <div className="hero-img">
@@ -17,13 +26,10 @@ export const Hero = () => {
               height={125}
             />
           </div>
-          <Link href="/booking">
-            <PrimaryButton>Book a Table</PrimaryButton>
-          </Link>
-          <br></br>
-          <Link href="/contact">
-            <SecondaryButton>Contact Us</SecondaryButton>
-          </Link>
+          <div className="button-container">
+            <PrimaryButton onClick={goToBookTable}>Book a Table</PrimaryButton>
+            <SecondaryButton onClick={goToContact}>Contact Us</SecondaryButton>
+          </div>
         </div>
       </div>
     </>

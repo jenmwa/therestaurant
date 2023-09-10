@@ -2,6 +2,7 @@
 
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
+import Contact from "./contact/page";
 
 //vi ska kalla på createrestaurant och få svar och svaret tillgängligt i hela appen
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
     <>
       <Hero></Hero>
       <About></About>
+      <Contact></Contact>
     </>
   );
 }
