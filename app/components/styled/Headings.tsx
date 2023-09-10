@@ -8,13 +8,13 @@ import {
 } from "./variables";
 
 export const H1 = styled.h1`
-  font-size: 4.5rem;
+  font-size: 4rem;
   font-family: ${FontHeading};
   color: ${accent1};
 `;
 
 export const H2 = styled.h2`
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-family: ${FontHeading};
   color: ${accent1};
 `;

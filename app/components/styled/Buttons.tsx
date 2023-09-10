@@ -11,7 +11,7 @@ import {
 export const Button = styled.button`
   display: inline-block;
   border: none;
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-weight: bold;
   font-size: 1rem;
   padding: 0.8rem 1.6rem;
