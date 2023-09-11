@@ -90,6 +90,13 @@ export const TimeButton = styled(Button)<{ isSelected: boolean }>`
   border: 4px solid ${accent4};
   font-weight: 300;
 
+  &:disabled {
+    cursor: none;
+    background-color: black;
+    border: 4px solid ${grey300};
+    color: ${grey300};
+  }
+
   ${(props) =>
     props.isSelected &&
     css`

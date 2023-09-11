@@ -14,6 +14,8 @@ interface IShowBookTableFormProps {
   isValid: boolean;
   isTimeSet: boolean;
   isGuestFormSubmitted: boolean;
+  is18Available: boolean;
+  is21Available: boolean;
 }
 
 export const ShowBookTableForm = ({
@@ -28,6 +30,8 @@ export const ShowBookTableForm = ({
   isValid,
   isTimeSet,
   isGuestFormSubmitted,
+  is18Available,
+  is21Available,
 }: IShowBookTableFormProps) => {
   return (
     <>
@@ -47,6 +51,8 @@ export const ShowBookTableForm = ({
           isTimeSet={isTimeSet}
           userDate={userDate}
           userGuests={userGuests}
+          is18Available={is18Available}
+          is21Available={is21Available}
         ></TimeSelectionForm>
       )}
     </>
