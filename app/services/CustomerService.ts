@@ -3,10 +3,10 @@ import { CreateCustomer } from "../models/CreateCustomer";
 
 const BASE_URL = "https://school-restaurant-api.azurewebsites.net/customer/";
 
-async function getCustomer(newCustomerId: string) {
+export async function getCustomer(newCustomerId: string) {
   const response = await axios.get(`${BASE_URL}${newCustomerId}`);
   return response.data[0];
-};
+}
 
 export async function createNewCustomer(postData: CreateCustomer) {
   try {
@@ -19,4 +19,4 @@ export async function createNewCustomer(postData: CreateCustomer) {
   } catch (error) {
     console.error("POST Error:", error);
   }
-};
+}
