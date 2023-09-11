@@ -59,15 +59,17 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
     setSelectedTime(time);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     console.log(
       "check availability for : ",
       userGuests + " guests, " + userDate
     );
-    // getBookings(restaurantId);
+
+    const bookingData = await getBookings(restaurantId, userDate);
+
     // getBookings("623b85d54396b96c57bde7c3");
-    const availabilityStatus = checkAvailability(testGETObject, userDate);
+    const availabilityStatus = checkAvailability(bookingData, userDate);
     setIs18Available(availabilityStatus.availableTables1800);
     setIs21Available(availabilityStatus.availableTables2100);
 
