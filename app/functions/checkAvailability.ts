@@ -1,6 +1,6 @@
 import { IBooking } from "../models/IBooking"
 
-const MAXTABLES = 4;
+const MAXTABLES = 15;
 export const checkAvailability = (bookingData: IBooking[], userDate: string,) => {
   const bookingsForUserDate = bookingData.filter((booking) => booking.date === userDate);
   console.log(bookingsForUserDate);
