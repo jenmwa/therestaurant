@@ -64,7 +64,7 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
       userGuests + " guests, " + userDate
     );
     // getBookings(restaurantId);
-    checkAvailability(testGETObject);
+    checkAvailability(testGETObject, userDate);
     // getBookings("623b85d54396b96c57bde7c3");
 
     setIsGuestFormSubmitted(true);
