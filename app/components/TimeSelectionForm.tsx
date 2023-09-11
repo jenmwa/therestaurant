@@ -64,6 +64,7 @@ export const TimeSelectionForm = ({
             <p>Selected Date: {userDate}</p>
             <p>Numbers of Guests: {userGuests}</p>
             <p>Selected Time: {selectedTime}</p>
+            {/*FIXA så default 18:00 inte står.*/}
           </div>
         )}
         <SubmitButton type="submit" disabled={!isTimeSet}>

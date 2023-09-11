@@ -90,6 +90,12 @@ export const TimeButton = styled(Button)<{ isSelected: boolean }>`
   border: 4px solid ${accent4};
   font-weight: 300;
 
+  &:hover {
+    outline: 4px solid ${accent3};
+    transition-timing-function: ease-in;
+    transition: 0.5s;
+  }
+
   &:disabled {
     cursor: none;
     background-color: black;
