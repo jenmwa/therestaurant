@@ -6,6 +6,10 @@ import { CustomerForm } from "./CustomerForm";
 import { createNewCustomer } from "../services/CustomerService";
 import { CreateCustomer } from "../models/CreateCustomer";
 import { ICustomer } from "../models/ICustomer";
+import {
+  checkAvailability,
+  testGETObject,
+} from "../functions/checkAvailability";
 
 export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
   const [userDate, setUserDate] = useState("");
@@ -59,7 +63,8 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
       "check availability for : ",
       userGuests + " guests, " + userDate
     );
-    getBookings(restaurantId);
+    // getBookings(restaurantId);
+    checkAvailability(testGETObject);
     // getBookings("623b85d54396b96c57bde7c3");
 
     setIsGuestFormSubmitted(true);
