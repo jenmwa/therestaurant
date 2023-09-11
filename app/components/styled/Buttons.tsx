@@ -95,6 +95,13 @@ export const TimeButton = styled(Button)<{ isSelected: boolean }>`
     background-color: black;
     border: 4px solid ${grey300};
     color: ${grey300};
+
+    &:hover {
+      cursor: auto;
+      border: 4px solid ${grey300};
+      outline: none;
+      color: ${grey300};
+    }
   }
 
   ${(props) =>

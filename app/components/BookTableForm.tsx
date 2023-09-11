@@ -6,10 +6,7 @@ import { CustomerForm } from "./CustomerForm";
 import { createNewCustomer } from "../services/CustomerService";
 import { CreateCustomer } from "../models/CreateCustomer";
 import { ICustomer } from "../models/ICustomer";
-import {
-  checkAvailability,
-  testGETObject,
-} from "../functions/checkAvailability";
+import { checkAvailability } from "../functions/checkAvailability";
 
 export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
   const [userDate, setUserDate] = useState("");
