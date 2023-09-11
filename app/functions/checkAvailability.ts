@@ -1,5 +1,22 @@
 import { IBooking } from "@/app/models/IBooking"
 
+const MAXTABLES = 4;
+export const checkAvailability = (bookingData: IBooking[], userDate: string,) => {
+  const bookingsForUserDate = bookingData.filter((booking) => booking.date === userDate);
+  console.log(bookingsForUserDate);
+  if (bookingsForUserDate.length > 0) {
+    console.log("Bookings found for the same date.");
+    const availableTables1800 = bookingsForUserDate.filter((booking) => booking.time === '18:00').length < MAXTABLES;
+    const availableTables2100 = bookingsForUserDate.filter((booking) => booking.time === '21:00').length < MAXTABLES;
+    console.log('available at 18:', availableTables1800);
+    console.log('available at 21:', availableTables2100);
+    return { availableTables1800, availableTables2100 };
+  } else {
+    console.log("No bookings found for the same date.");
+    return { availableTables1800: true, availableTables2100: true };
+  }
+}
+
 
 // export const testGETObject = [
 //   {
@@ -68,70 +85,51 @@ import { IBooking } from "@/app/models/IBooking"
 //   }
 // ]
 
-const MAXTABLES = 4;
+
 // export const checkAvailability = (bookings: IBooking[]) => {
-export const checkAvailability = (bookingData: IBooking[], userDate: string,) => {
-  // console.log(testGETObject.length)
-  // if (testGETObject.length >= MAXTABLES) {
-  //   console.log('we have to check if its the same date')
-  //   console.log(JSON.stringify(userDate), testObject)
-  //   const bookingsForUserDate = testObject.filter((booking) => booking.date === userDate);
-  //   if (bookingsForUserDate.length > 0) {
-  //     console.log("It's true. Bookings found for the same date.");
-  //     checkMaxSession(bookingsForUserDate)
-  //   } else {
-  //     console.log("It's false. No bookings found for the same date.");
-  //     // returnera både 18:00 och 21:00 available
-  //   }
-  // }
-  const bookingsForUserDate = bookingData.filter((booking) => booking.date === userDate);
-  console.log(bookingsForUserDate)
-  //   if (bookingsForUserDate.length >= MAXTABLES) {
-  //     console.log(JSON.stringify(userDate), bookingsForUserDate);
+// console.log(testGETObject.length)
+// if (testGETObject.length >= MAXTABLES) {
+//   console.log('we have to check if its the same date')
+//   console.log(JSON.stringify(userDate), testObject)
+//   const bookingsForUserDate = testObject.filter((booking) => booking.date === userDate);
+//   if (bookingsForUserDate.length > 0) {
+//     console.log("It's true. Bookings found for the same date.");
+//     checkMaxSession(bookingsForUserDate)
+//   } else {
+//     console.log("It's false. No bookings found for the same date.");
+//     // returnera både 18:00 och 21:00 available
+//   }
+// }
 
-  //     const availableTables1800 = checkMaxSession(bookingsForUserDate, "18:00")
-  //     const availableTables2100 = checkMaxSession(bookingsForUserDate, "21:00")
+//   if (bookingsForUserDate.length >= MAXTABLES) {
+//     console.log(JSON.stringify(userDate), bookingsForUserDate);
 
-  //     if (availableTables1800 && availableTables2100) {
-  //       console.log('Both 18:00 and 21:00 are available.');
-  //     }
-  //     else if (availableTables1800) {
-  //       console.log('Only 18:00 is available.');
-  //       return availableTables1800;
-  //     }
-  //     else if (availableTables2100) {
-  //       console.log('Only 21:00 is available.');
-  //     } else {
-  //       console.log('No tables are available for 18:00 and 21:00.');
-  //     }
-  //   } else {
-  //     console.log('Both sessions Available.');
-  //   }
-  // }
+//     const availableTables1800 = checkMaxSession(bookingsForUserDate, "18:00")
+//     const availableTables2100 = checkMaxSession(bookingsForUserDate, "21:00")
 
-  // export const checkMaxSession = (bookingsForUserDate: IBooking[], time: string) => {
-  //   console.log('date checked, lets check time:', time, bookingsForUserDate);
+//     if (availableTables1800 && availableTables2100) {
+//       console.log('Both 18:00 and 21:00 are available.');
+//     }
+//     else if (availableTables1800) {
+//       console.log('Only 18:00 is available.');
+//       return availableTables1800;
+//     }
+//     else if (availableTables2100) {
+//       console.log('Only 21:00 is available.');
+//     } else {
+//       console.log('No tables are available for 18:00 and 21:00.');
+//     }
+//   } else {
+//     console.log('Both sessions Available.');
+//   }
+// }
 
-  //   const bookingsPerTime = bookingsForUserDate.filter((booking) => booking.time === time);
-  //   console.log(bookingsPerTime)
-  //   return bookingsPerTime.length < MAXTABLES;
+// export const checkMaxSession = (bookingsForUserDate: IBooking[], time: string) => {
+//   console.log('date checked, lets check time:', time, bookingsForUserDate);
 
-  if (bookingsForUserDate.length > 0) {
-    console.log("Bookings found for the same date.");
-    const availableTables1800 = bookingsForUserDate.filter((booking) => booking.time === '18:00').length < MAXTABLES;
-    const availableTables2100 = bookingsForUserDate.filter((booking) => booking.time === '21:00').length < MAXTABLES;
-    console.log('available at 18:', availableTables1800)
-    console.log('available at 21:', availableTables2100)
-    return { availableTables1800, availableTables2100 };
-  } else {
-    console.log("No bookings found for the same date.");
-    return { availableTables1800: true, availableTables2100: true };
-  }
-
-}
+//   const bookingsPerTime = bookingsForUserDate.filter((booking) => booking.time === time);
+//   console.log(bookingsPerTime)
+//   return bookingsPerTime.length < MAXTABLES;
+// }
 
 
-// om det stämmer, så måste vi kolla OM datumen är samma.
-//och om detta stämmer, så måste vi kolla OM Tiderna är samma.
-// OM detta stämmer, SESSIONEN FULL!
-// disabla knappen med samma värde som tiderna.
