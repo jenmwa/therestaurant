@@ -1,4 +1,4 @@
-import { IBooking } from "@/app/models/IBooking"
+import { IBooking } from "../models/IBooking"
 
 const MAXTABLES = 4;
 export const checkAvailability = (bookingData: IBooking[], userDate: string,) => {
