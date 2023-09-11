@@ -28,7 +28,7 @@ export function Admin() {
 
   const handleEditClick = (booking: IBooking) => {
     console.log("click Edit on: ", booking);
-    router.push(`/admin/booking/+${booking._id}`);
+    router.push(`/admin/booking/${booking._id}`);
     //till editläge direkt?
   };
 
