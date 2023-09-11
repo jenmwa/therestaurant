@@ -6,7 +6,7 @@ import { IBooking } from "../models/IBooking";
 const BASE_URL = "https://school-restaurant-api.azurewebsites.net/booking/";
 
 // export const getBookings = async (restaurantId: string) => {
-export const getBookings = async (restaurantId: string, userDate: string) => {
+export const getBookings = async (restaurantId: string) => {
   try {
     const response = await axios.get<IBooking[]>(
       BASE_URL + `restaurant/${restaurantId}`

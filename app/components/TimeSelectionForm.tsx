@@ -25,6 +25,7 @@ export const TimeSelectionForm = ({
   is21Available,
 }: ITimeSelectionFormProps) => {
   console.log("is18Available: ", is18Available);
+  console.log("is21Available: ", is21Available);
 
   const timeSelectionMessage = () => {
     if (is18Available && is21Available) {

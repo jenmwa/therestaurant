@@ -63,10 +63,11 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
       userGuests + " guests, " + userDate
     );
 
-    const bookingData = await getBookings(restaurantId, userDate);
+    const bookingData = await getBookings(restaurantId);
 
     // getBookings("623b85d54396b96c57bde7c3");
     const availabilityStatus = checkAvailability(bookingData, userDate);
+    console.log(availabilityStatus);
     setIs18Available(availabilityStatus.availableTables1800);
     setIs21Available(availabilityStatus.availableTables2100);
 
