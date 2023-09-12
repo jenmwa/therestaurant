@@ -28,7 +28,6 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
   const [booking, setBooking] = useState(false);
   const [confirmedBooking, setConfirmedBooking] = useState(false);
 
-
   function handleChangeCustomerForm(e: ChangeEvent<HTMLInputElement>) {
     const name = e.target.name;
     setCustomerInput({ ...customerInput, [name]: e.target.value });

@@ -78,7 +78,7 @@ export const SubmitButton = styled(Button)`
   }
 `;
 
-export const TimeButton = styled(Button)<{ isSelected: boolean }>`
+export const TimeButton = styled(Button)`
   width: 45%;
   display: inline;
   font-weight: bold;
@@ -109,9 +109,11 @@ export const TimeButton = styled(Button)<{ isSelected: boolean }>`
       color: ${grey300};
     }
   }
+`;
 
+export const SelectedTimeButton = styled(TimeButton)<{ selected?: boolean }>`
   ${(props) =>
-    props.isSelected &&
+    props.selected &&
     css`
       background-color: ${accent4};
       color: ${grey700};
