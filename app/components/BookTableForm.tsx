@@ -7,6 +7,7 @@ import { createNewCustomer } from "../services/CustomerService";
 import { CreateCustomer } from "../models/CreateCustomer";
 import { ICustomer } from "../models/ICustomer";
 import { checkAvailability } from "../functions/checkAvailability";
+import { ConfirmBooking } from "./ConfirmBooking";
 
 export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
   const [userDate, setUserDate] = useState("");
@@ -24,6 +25,9 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
   const [customer, setCustomer] = useState<ICustomer>();
   const [is18Available, setIs18Available] = useState(false);
   const [is21Available, setIs21Available] = useState(false);
+  const [booking, setBooking] = useState(false);
+  const [confirmedBooking, setConfirmedBooking] = useState(false);
+
 
   function handleChangeCustomerForm(e: ChangeEvent<HTMLInputElement>) {
     const name = e.target.name;
@@ -79,11 +83,12 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
     const getCustomerData = await createNewCustomer(customerInput);
     setCustomer(getCustomerData);
     console.log("Object from submit", customerInput);
+    setBooking(true);
 
     //TODO: Submit form uppdaterar inte state vilket gör customer till false vid första klick. Fungerar sedan vid andra klick.
     // refaktorera och bygg om submit funktionalitet.
 
-    if (customer) {
+    /*     if (customer) {
       const booking = new CreateBooking(
         restaurantId,
         userDate,
@@ -98,13 +103,27 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
       );
       createBookings(booking);
       //rendera tack-för-din-bokning
-    }
+    } */
   }
 
   const handleBooking = (e: FormEvent) => {
     e.preventDefault();
     setIsTimeSet(true);
   };
+
+  async function createBooking() {
+    if (customer) {
+      const newBooking = new CreateBooking(
+        restaurantId,
+        userDate,
+        selectedTime,
+        userGuests,
+        customer
+      );
+      createBookings(newBooking);
+      setConfirmedBooking(true);
+    }
+  }
 
   console.log(customerInput);
   console.log(customer);
@@ -132,6 +151,16 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
         customerInput={customerInput}
         customer={customer}
       ></CustomerForm>
+      {booking && (
+        <ConfirmBooking
+          customer={customer}
+          selectedTime={selectedTime}
+          userDate={userDate}
+          userGuests={userGuests}
+          createBooking={createBooking}
+          confirmedBooking={confirmedBooking}
+        ></ConfirmBooking>
+      )}
     </>
   );
 };
