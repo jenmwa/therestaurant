@@ -4,6 +4,9 @@ import "../style/customerForm.scss";
 import { ChangeEvent, FormEvent } from "react";
 import { CreateCustomer } from "../models/CreateCustomer";
 import { ICustomer } from "../models/ICustomer";
+import { Form } from "./styled/Forms";
+import { Label, StyledInput } from "./styled/Inputs";
+import { SubmitButton } from "./styled/Buttons";
 
 interface ICustomerFormProps {
   handleCreateCustomer: (e: FormEvent) => void;
@@ -20,46 +23,46 @@ export function CustomerForm({
 }: ICustomerFormProps) {
   return (
     <section className="customerForm">
-      <form onSubmit={handleCreateCustomer}>
-        <label>
+      <Form onSubmit={handleCreateCustomer}>
+        <Label>
           Name:
-          <input
+          <StyledInput
             type="text"
             value={customerInput.name}
             onChange={handleChangeCustomerForm}
             name="name"
             autoFocus
           />
-        </label>
-        <label>
+        </Label>
+        <Label>
           Lastname:
-          <input
+          <StyledInput
             type="text"
             value={customerInput.lastname}
             onChange={handleChangeCustomerForm}
             name="lastname"
           />
-        </label>
-        <label>
+        </Label>
+        <Label>
           Email:
-          <input
+          <StyledInput
             type="email"
             value={customerInput.email}
             onChange={handleChangeCustomerForm}
             name="email"
           />
-        </label>
-        <label>
+        </Label>
+        <Label>
           Phone:
-          <input
+          <StyledInput
             type="tel"
             value={customerInput.phone}
             onChange={handleChangeCustomerForm}
             name="phone"
           />
-        </label>
-        <button>Submit</button>
-      </form>
+        </Label>
+        <SubmitButton>Submit</SubmitButton>
+      </Form>
     </section>
   );
 }

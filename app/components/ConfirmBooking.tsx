@@ -2,6 +2,9 @@
 
 import "../style/confirmBooking.scss";
 import { ICustomer } from "../models/ICustomer";
+import { Section } from "./styled/Sections";
+import { H4 } from "./styled/Headings";
+import { PrimaryButton } from "./styled/Buttons";
 
 interface IConfirmBookingProps {
   customer: ICustomer | undefined;
@@ -22,25 +25,27 @@ export function ConfirmBooking({
 }: IConfirmBookingProps) {
   return (
     <>
-      <section className="confirmBoooking">
+      <Section className="confirmBooking">
         {confirmedBooking ? (
           <div className="confirmBookingCard">
             <span>
-              Thank you for deciding to dine with us. We'll see you soon!
+              Thank you for deciding to dine with us. We&apos;ll see you soon!
             </span>
           </div>
         ) : (
           <div className="confirmBookingCard">
-            <h3>Confirm Booking</h3>
+            <H4>Confirm Booking</H4>
             <span>Name: {customer?.name}</span>
             <span>Lastname: {customer?.lastname}</span>
             <span>Date: {userDate}</span>
             <span>Time: {selectedTime}</span>
             <span>Number of guests: {userGuests}</span>
-            <button onClick={createBooking}>Confirm booking</button>
+            <PrimaryButton onClick={createBooking}>
+              Confirm booking
+            </PrimaryButton>
           </div>
         )}
-      </section>
+      </Section>
     </>
   );
 }
