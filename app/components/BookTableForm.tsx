@@ -6,6 +6,7 @@ import { CustomerForm } from "./CustomerForm";
 import { createNewCustomer } from "../services/CustomerService";
 import { CreateCustomer } from "../models/CreateCustomer";
 import { ICustomer } from "../models/ICustomer";
+import { checkAvailability } from "../functions/checkAvailability";
 import { ConfirmBooking } from "./ConfirmBooking";
 
 export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
@@ -22,8 +23,11 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
     phone: "",
   });
   const [customer, setCustomer] = useState<ICustomer>();
+  const [is18Available, setIs18Available] = useState(false);
+  const [is21Available, setIs21Available] = useState(false);
   const [booking, setBooking] = useState(false);
   const [confirmedBooking, setConfirmedBooking] = useState(false);
+
 
   function handleChangeCustomerForm(e: ChangeEvent<HTMLInputElement>) {
     const name = e.target.name;
@@ -56,14 +60,20 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
     setSelectedTime(time);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     console.log(
       "check availability for : ",
       userGuests + " guests, " + userDate
     );
-    getBookings(restaurantId);
+
+    const bookingData = await getBookings(restaurantId);
+
     // getBookings("623b85d54396b96c57bde7c3");
+    const availabilityStatus = checkAvailability(bookingData, userDate);
+    console.log(availabilityStatus);
+    setIs18Available(availabilityStatus.availableTables1800);
+    setIs21Available(availabilityStatus.availableTables2100);
 
     setIsGuestFormSubmitted(true);
   };
@@ -132,6 +142,8 @@ export const BookTableForm = ({ restaurantId }: { restaurantId: string }) => {
         isValid={isValid}
         isTimeSet={isTimeSet}
         isGuestFormSubmitted={isGuestFormSubmitted}
+        is18Available={is18Available}
+        is21Available={is21Available}
       ></ShowBookTableForm>
       <CustomerForm
         handleCreateCustomer={handleCreateCustomer}

@@ -13,7 +13,7 @@ export function Booking() {
   return (
     <>
       <Section>
-        <H1>Booking</H1>
+        <H1>Book a Table</H1>
         <BookTableForm restaurantId={_id}></BookTableForm>
       </Section>
     </>

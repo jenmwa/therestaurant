@@ -5,6 +5,7 @@ import { IBooking } from "../models/IBooking";
 
 const BASE_URL = "https://school-restaurant-api.azurewebsites.net/booking/";
 
+// export const getBookings = async (restaurantId: string) => {
 export const getBookings = async (restaurantId: string) => {
   try {
     const response = await axios.get<IBooking[]>(
@@ -12,13 +13,15 @@ export const getBookings = async (restaurantId: string) => {
     );
     console.log(response.data);
     const bookingData = response.data;
-    if (response.data.length >= 15) {
-      checkAvailability(bookingData);
-    } else {
-      return bookingData;
-    }
+    // if (response.data.length >= 15) {
+    //   checkAvailability(bookingData, userDate);
+    // } else {
+    //   return bookingData;
+    // }
+    return bookingData;
   } catch (error) {
     console.error("Error:", error);
+    return [];
   }
 };
 
