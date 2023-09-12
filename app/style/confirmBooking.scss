@@ -1,19 +1,10 @@
 @import '../style/variables.scss';
 
-section.confirmBooking {
-  
-  min-height: 100vh;
-  padding: 10rem 1rem 1rem 1rem;
-
-  h2 {
-    font-family: $FontHeading;
-    font-size: 4rem;
-    color: $accent1;
-  }
-
-  p {
-    margin-inline: 1rem;
-    color: $grey300;
-  }
-
+div.confirmBookingCard {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid $accent2;
+  padding: 2rem;
+  margin-top: 2rem;
 }
