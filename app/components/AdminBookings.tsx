@@ -18,7 +18,7 @@ export const AdminBookings = ({
   return (
     <section className="admin-wrapper">
       <h1>Admin</h1>
-      <h3>Sök bokning via namn</h3>
+      <p>Sök bokning via namn</p>
       <input
         onChange={(e) => {
           const filteredBookings = bookings.filter((b) => {
@@ -36,21 +36,20 @@ export const AdminBookings = ({
         }}
         type="text"
       />
-      <span></span>
 
-      <ul>
+      <ul className="admin-booking-list-wrapper">
         {filteredBookings.map((booking) => (
-          <li key={booking._id}>
+          <li className="admin-booking-list" key={booking._id}>
             <Link href={`/admin/booking/${booking._id}`}>
-              <span>
-                Namn: {booking.customerInfo.name}{" "}
-                {booking.customerInfo.lastname}
-              </span>
-              <span>
-                Datum/tid: {booking.date}
-                {booking.time}
-              </span>
-              <span>{booking.numberOfGuests}</span>
+              <div className="list-details">
+                <span>
+                  {booking.customerInfo.name} {booking.customerInfo.lastname}
+                </span>
+                <span> {booking.date}</span>
+                <span> {booking.time}</span>
+
+                <span>{booking.numberOfGuests}</span>
+              </div>
             </Link>
             {/* <button onClick={() => handleEditClick(booking)}>Edit</button>
             <button onClick={() => handleDeleteClick(booking._id)}>
