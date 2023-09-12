@@ -1,5 +1,6 @@
 "use client";
 
+import { ContactForm } from "../components/ContactForm";
 import { H1 } from "../components/styled/Headings";
 import { Section } from "../components/styled/Sections";
 
@@ -8,6 +9,7 @@ export function Contact() {
     <>
       <Section>
         <H1>Contact</H1>
+        <ContactForm></ContactForm>
       </Section>
     </>
   );
