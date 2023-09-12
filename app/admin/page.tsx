@@ -4,16 +4,19 @@ import { useContext, useEffect, useState } from "react";
 import "../style/admin.scss";
 import { IRestaurant } from "../models/IRestaurant";
 import { RestaurantContext } from "../contexts/RestaurantContext";
-import { getBookings } from "../services/BookingService";
+import { deleteBooking, getBookings } from "../services/BookingService";
 import { AdminBookings } from "../components/AdminBookings";
-import { useRouter } from "next/navigation";
 import { getCustomer } from "../services/CustomerService";
 import { Booking } from "../models/Booking";
 
 export function Admin() {
   const restaurant = useContext<IRestaurant>(RestaurantContext);
   const [bookings, setBookings] = useState<Booking[]>([]);
-  const router = useRouter();
+
+  const onBookingDelete = async (bookingId: string) => {
+    await deleteBooking(bookingId);
+    setBookings(bookings.filter((b) => b._id !== bookingId));
+  };
 
   //Hämtar alla bokningar
   useEffect(() => {
@@ -45,7 +48,12 @@ export function Admin() {
     return <div>Laddar...</div>;
   }
 
-  return <AdminBookings bookings={bookings}></AdminBookings>;
+  return (
+    <AdminBookings
+      onBookingDelete={onBookingDelete}
+      bookings={bookings}
+    ></AdminBookings>
+  );
 }
 
 export default Admin;
