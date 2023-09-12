@@ -1,4 +1,7 @@
 import { FormEvent } from "react";
+import { Form } from "./styled/Forms";
+import { SubmitButton, TimeButton } from "./styled/Buttons";
+import { availableParallelism } from "os";
 
 interface ITimeSelectionFormProps {
   handleTime: (time: string) => void;
@@ -7,6 +10,8 @@ interface ITimeSelectionFormProps {
   isTimeSet: boolean;
   userDate: string;
   userGuests: number;
+  is18Available: boolean;
+  is21Available: boolean;
 }
 
 export const TimeSelectionForm = ({
@@ -16,24 +21,43 @@ export const TimeSelectionForm = ({
   isTimeSet,
   userDate,
   userGuests,
+  is18Available,
+  is21Available,
 }: ITimeSelectionFormProps) => {
+  console.log("is18Available: ", is18Available);
+  console.log("is21Available: ", is21Available);
+
+  const timeSelectionMessage = () => {
+    if (is18Available && is21Available) {
+      return "Choose your time:";
+    } else if (is18Available) {
+      return "Only 18:00 is available:";
+    } else if (is21Available) {
+      return "Only 21:00 is available:";
+    } else {
+      return "We're fully booked. Please choose another date.";
+    }
+  };
+
   return (
     <>
-      <form className="form--book-table" onSubmit={handleBooking}>
-        Choose your time:
+      <Form onSubmit={handleBooking}>
+        {timeSelectionMessage()}
         <div className="btn-wrapper">
-          <button
-            className={`time-btn ${selectedTime === "18:00" ? "selected" : ""}`}
+          <TimeButton
+            isSelected={selectedTime === "18:00"}
             onClick={() => handleTime("18:00")}
+            disabled={!is18Available}
           >
             18:00
-          </button>
-          <button
-            className={`time-btn ${selectedTime === "21:00" ? "selected" : ""}`}
+          </TimeButton>
+          <TimeButton
+            isSelected={selectedTime === "21:00"}
             onClick={() => handleTime("21:00")}
+            disabled={!is21Available}
           >
             21:00
-          </button>
+          </TimeButton>
         </div>
         {selectedTime && (
           <div className="confirmation-div">
@@ -41,12 +65,13 @@ export const TimeSelectionForm = ({
             <p>Selected Date: {userDate}</p>
             <p>Numbers of Guests: {userGuests}</p>
             <p>Selected Time: {selectedTime}</p>
+            {/*FIXA så default 18:00 inte står.*/}
           </div>
         )}
-        <button type="submit" className="submit-btn" disabled={!isTimeSet}>
+        <SubmitButton type="submit" disabled={!isTimeSet}>
           Continue with Booking
-        </button>
-      </form>
+        </SubmitButton>
+      </Form>
     </>
   );
 };
