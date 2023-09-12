@@ -5,8 +5,15 @@ import { IBooking } from "../models/IBooking";
 
 const BASE_URL = "https://school-restaurant-api.azurewebsites.net/booking/";
 
+
+export const getBookings = async (
+  restaurantId: string
+): Promise<IBooking[]> => {
+
+  // ^kolla om den fungerar som det ska efter merge
+
 // export const getBookings = async (restaurantId: string) => {
-export const getBookings = async (restaurantId: string) => {
+
   try {
     const response = await axios.get<IBooking[]>(
       BASE_URL + `restaurant/${restaurantId}`

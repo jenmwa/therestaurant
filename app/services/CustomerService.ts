@@ -1,9 +1,10 @@
 import axios from "axios";
 import { CreateCustomer } from "../models/CreateCustomer";
+import { ICustomer } from "../models/ICustomer";
 
 const BASE_URL = "https://school-restaurant-api.azurewebsites.net/customer/";
 
-export async function getCustomer(newCustomerId: string) {
+export async function getCustomer(newCustomerId: string): Promise<ICustomer> {
   const response = await axios.get(`${BASE_URL}${newCustomerId}`);
   return response.data[0];
 }
