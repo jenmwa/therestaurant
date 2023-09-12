@@ -1,10 +1,11 @@
 @import "../style/variables.scss";
 
 footer {
+  display: flex;
+  justify-content: space-between;
   padding: 2rem;
   background-color: $accent2;
   color: $grey700;
-  // position: fixed;
   width: 100%;
   bottom: 0;
 }

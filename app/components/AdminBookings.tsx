@@ -5,37 +5,31 @@ import { useState } from "react";
 
 interface IAdminBookingsProps {
   bookings: Booking[];
-  handleEditClick: (booking: Booking) => void;
-  handleDeleteClick: (id: string) => void;
 }
 
-export const AdminBookings = ({
-  bookings,
-  handleEditClick,
-  handleDeleteClick,
-}: IAdminBookingsProps) => {
+export const AdminBookings = ({ bookings }: IAdminBookingsProps) => {
   const [filteredBookings, setFilteredBookings] = useState(bookings);
+
+  const updateFilter = (e) => {
+    const filteredBookings = bookings.filter((b) => {
+      return (
+        b.customerInfo.name
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase()) ||
+        b.customerInfo.lastname
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase())
+      );
+    });
+
+    setFilteredBookings(filteredBookings);
+  };
+
   return (
     <section className="admin-wrapper">
       <h1>Admin</h1>
       <p>Sök bokning via namn</p>
-      <input
-        onChange={(e) => {
-          const filteredBookings = bookings.filter((b) => {
-            return (
-              b.customerInfo.name
-                .toLowerCase()
-                .includes(e.target.value.toLowerCase()) ||
-              b.customerInfo.lastname
-                .toLowerCase()
-                .includes(e.target.value.toLowerCase())
-            );
-          });
-
-          setFilteredBookings(filteredBookings);
-        }}
-        type="text"
-      />
+      <input className="admin-input" onChange={updateFilter} type="text" />
 
       <ul className="admin-booking-list-wrapper">
         {filteredBookings.map((booking) => (
@@ -47,14 +41,9 @@ export const AdminBookings = ({
                 </span>
                 <span> {booking.date}</span>
                 <span> {booking.time}</span>
-
                 <span>{booking.numberOfGuests}</span>
               </div>
             </Link>
-            {/* <button onClick={() => handleEditClick(booking)}>Edit</button>
-            <button onClick={() => handleDeleteClick(booking._id)}>
-              Delete
-            </button> */}
           </li>
         ))}
       </ul>

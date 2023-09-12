@@ -5,6 +5,14 @@ import { ICustomer } from "@/app/models/ICustomer";
 import { getBookingById } from "@/app/services/BookingService";
 import { getCustomer } from "@/app/services/CustomerService";
 import { useEffect, useState } from "react";
+import "../../../style/bookingCard.scss";
+import { Booking } from "@/app/models/Booking";
+
+interface IAdminEditProps {
+  bookings: Booking[];
+  handleEditClick: (booking: Booking) => void;
+  handleDeleteClick: (id: string) => void;
+}
 
 export default function Page({ params }: { params: { id: string } }) {
   const [booking, setBooking] = useState<IBooking | null>(null);
@@ -32,6 +40,8 @@ export default function Page({ params }: { params: { id: string } }) {
       <li>Datum: {booking.date}</li>
       <li>Tid: {booking.time}</li>
       <li> Antal gäster {booking.numberOfGuests}</li>
+      <button onClick={() => handleEditClick(booking)}>Ändra</button>
+      <button onClick={() => handleDeleteClick(booking._id)}>Avboka</button>
     </ul>
   );
 }

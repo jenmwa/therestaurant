@@ -8,11 +8,9 @@ export const Footer = () => {
   const restaurant = useContext(RestaurantContext);
 
   return (
-    <footer>
+    <footer className="">
       {restaurant.name}
-      <Link href="/admin">
-        <button>ADMIN</button>
-      </Link>
+      <Link href="/admin">Admin</Link>
     </footer>
   );
 };
