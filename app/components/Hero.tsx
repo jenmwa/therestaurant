@@ -26,10 +26,8 @@ export const Hero = () => {
               height={125}
             />
           </div>
-          {/* <div className="button-container"> */}
           <PrimaryButton onClick={goToBookTable}>Book a Table</PrimaryButton>
           <SecondaryButton onClick={goToContact}>Contact Us</SecondaryButton>
-          {/* </div> */}
         </div>
       </div>
     </>
