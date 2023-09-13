@@ -17,8 +17,9 @@ export const About = () => {
           <div className="about--text">
             {" "}
             <p>
-              <span>The Restaurant</span> is a lavish sanctuary of gastronomy,
-              blending Swedish opulence with world-class cuisine.
+              <span className="about--name">The Restaurant</span> is a lavish
+              sanctuary of gastronomy, blending Swedish opulence with
+              world-class cuisine.
             </p>
             <p>
               {" "}
@@ -29,7 +30,7 @@ export const About = () => {
               Frequented by Hollywood&apos;s elite, it&apos;s where every dish
               is a masterpiece and every moment, a taste of luxury.
             </p>
-            <span className="tagline">
+            <span className="about--tagline">
               Where Culinary Opulence Meets Swedish Elegance
             </span>
           </div>
