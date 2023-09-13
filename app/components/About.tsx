@@ -2,15 +2,17 @@ import { useContext } from "react";
 import "../style/about.scss";
 import { RestaurantContext } from "../contexts/RestaurantContext";
 import { IRestaurant } from "../models/IRestaurant";
+import { Section } from "./styled/Sections";
+import { H1 } from "./styled/Headings";
 
 export const About = () => {
   const restaurant = useContext<IRestaurant>(RestaurantContext);
 
   return (
     <>
-      <section className="about">
-        <h1>{restaurant.name}</h1>
-      </section>
+      <Section>
+        <H1>{restaurant.name}</H1>
+      </Section>
     </>
   );
 };

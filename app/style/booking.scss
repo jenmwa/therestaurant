@@ -1,0 +1,48 @@
+@import "../style/variables.scss";
+
+.form-intro {
+  font-size: 1.5rem;
+  font-family: $FontParagraph;
+  font-weight: bold;
+  color: $accent2;
+  margin-bottom: 2rem;
+}
+
+p {
+  margin-inline: 1rem;
+  color: $grey300;
+}
+
+.btn-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+select {
+  width: 100%;
+  padding: 1rem;
+  background-color: $accent4;
+  color: $grey500;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.time-div {
+  width: 40%;
+  display: inline;
+  outline: 4px solid $accent4;
+  background-color: transparent;
+  color: $accent4;
+  padding: 0.4rem 0.8rem;
+  font-weight: bold;
+}
+
+.confirmation-div {
+  margin-top: 2rem;
+
+  p {
+    margin: 0;
+  }
+}

@@ -1,10 +1,12 @@
-@import '../style/variables.scss';
+@import "../style/variables.scss";
 
 footer {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
   padding: 2rem;
   background-color: $accent2;
   color: $grey700;
-  // position: absolute;
-  // width: 100%;
-  // bottom: 0;
+  width: 100%;
+  bottom: 0;
 }

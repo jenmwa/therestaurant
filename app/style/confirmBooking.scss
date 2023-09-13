@@ -1,0 +1,10 @@
+@import '../style/variables.scss';
+
+div.confirmBookingCard {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid $accent2;
+  padding: 2rem;
+  margin-top: 2rem;
+}

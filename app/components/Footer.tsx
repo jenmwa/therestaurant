@@ -3,12 +3,14 @@
 import { useContext } from "react";
 import "../style/footer.scss";
 import { RestaurantContext } from "../contexts/RestaurantContext";
+import Link from "next/link";
 export const Footer = () => {
   const restaurant = useContext(RestaurantContext);
 
   return (
-    <>
-      <footer>{restaurant.name}</footer>
-    </>
+    <footer className="">
+      {restaurant.name}
+      <Link href="/admin">Admin</Link>
+    </footer>
   );
 };
