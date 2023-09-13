@@ -118,5 +118,13 @@ export const SelectedTimeButton = styled(TimeButton)<{ selected?: boolean }>`
       background-color: ${accent4};
       color: ${grey700};
       font-weight: bold;
+
+      &:hover {
+        outline: 4px solid ${accent3};
+        background-color: ${accent4};
+        color: black;
+        transition-timing-function: ease-in;
+        transition: 0.5s;
+      }
     `}
 `;
