@@ -2,6 +2,7 @@ import axios from "axios";
 import { checkAvailability } from "../functions/checkAvailability";
 import { CreateBooking } from "../models/CreateBooking";
 import { IBooking } from "../models/IBooking";
+import { UpdateBooking } from "../models/UpdateBooking";
 
 const BASE_URL = "https://school-restaurant-api.azurewebsites.net/booking/";
 
@@ -42,6 +43,15 @@ export const createBookings = async (booking: CreateBooking) => {
     console.error("Error:", error);
   }
 };
+
+export async function updateBooking(bookingId: string, booking: UpdateBooking) {
+  try {
+    const response = await axios.put(`${BASE_URL}update/${bookingId}`, booking);
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+}
 
 // https://school-restaurant-api.azurewebsites.net/booking/delete/:id
 
