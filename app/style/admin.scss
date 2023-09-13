@@ -1,6 +1,7 @@
 @import "../style/variables.scss";
 
 .admin-wrapper {
+  min-height: 100vh;
   margin-top: 15rem;
   display: flex;
   flex-direction: column;
@@ -8,7 +9,7 @@
   gap: 1rem;
 }
 
-input {
+.admin-input {
   padding: 0.5rem;
   width: 20rem;
   align-items: center;
@@ -33,6 +34,7 @@ button {
 }
 
 .admin-booking-list-wrapper {
+  margin-bottom: 7rem;
   list-style-type: none;
   padding: 1rem;
   color: black;
@@ -57,6 +59,6 @@ button {
 
 .list-details {
   display: grid;
-  grid-template-columns: 10fr 3fr 2fr 1fr;
+  grid-template-columns: 5fr 3fr 2fr 1fr 1.5fr 1fr;
   gap: 0.7rem;
 }

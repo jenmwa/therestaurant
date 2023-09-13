@@ -1,22 +1,31 @@
-import { IBooking } from "../models/IBooking"
+import { IAvailability } from "../models/IAvailability";
+import { IBooking } from "../models/IBooking";
 
 const MAXTABLES = 15;
-export const checkAvailability = (bookingData: IBooking[], userDate: string,) => {
-  const bookingsForUserDate = bookingData.filter((booking) => booking.date === userDate);
+export const checkAvailability = (
+  bookingData: IBooking[],
+  userDate: string
+): IAvailability => {
+  const bookingsForUserDate = bookingData.filter(
+    (booking) => booking.date === userDate
+  );
   console.log(bookingsForUserDate);
   if (bookingsForUserDate.length > 0) {
     console.log("Bookings found for the same date.");
-    const availableTables1800 = bookingsForUserDate.filter((booking) => booking.time === '18:00').length < MAXTABLES;
-    const availableTables2100 = bookingsForUserDate.filter((booking) => booking.time === '21:00').length < MAXTABLES;
-    console.log('available at 18:', availableTables1800);
-    console.log('available at 21:', availableTables2100);
+    const availableTables1800 =
+      bookingsForUserDate.filter((booking) => booking.time === "18:00").length <
+      MAXTABLES;
+    const availableTables2100 =
+      bookingsForUserDate.filter((booking) => booking.time === "21:00").length <
+      MAXTABLES;
+    console.log("available at 18:", availableTables1800);
+    console.log("available at 21:", availableTables2100);
     return { availableTables1800, availableTables2100 };
   } else {
     console.log("No bookings found for the same date.");
     return { availableTables1800: true, availableTables2100: true };
   }
-}
-
+};
 
 // export const testGETObject = [
 //   {
@@ -85,7 +94,6 @@ export const checkAvailability = (bookingData: IBooking[], userDate: string,) =>
 //   }
 // ]
 
-
 // export const checkAvailability = (bookings: IBooking[]) => {
 // console.log(testGETObject.length)
 // if (testGETObject.length >= MAXTABLES) {
@@ -131,5 +139,3 @@ export const checkAvailability = (bookingData: IBooking[], userDate: string,) =>
 //   console.log(bookingsPerTime)
 //   return bookingsPerTime.length < MAXTABLES;
 // }
-
-
